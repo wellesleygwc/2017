@@ -7,8 +7,8 @@ near_hundred(90) => True
 near_hundred(89) => False
 """
 def near_hundred(n):
-  # your code here
-  return  # and here
+  # Your code here...
+  return  # ...and here.
 
 
 print near_hundred(93)

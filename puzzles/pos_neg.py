@@ -7,8 +7,8 @@ pos_neg(-1, 1, False) => True
 pos_neg(-4, -5, True) => True
 """
 def pos_neg(a, b, negative):
-  # your code here
-  return  # and here
+  # Your code here...
+  return  # ...and here.
 
 
 print pos_neg(1, -1, False)
