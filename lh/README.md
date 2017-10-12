@@ -1,3 +1,3 @@
-<DOCTYPE!>
-Hello World
+
+Hello!
 
