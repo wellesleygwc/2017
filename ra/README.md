@@ -4,7 +4,7 @@ Welcome to your personal folder under the Wellesley GWC Github Repository! You c
     <head>
     </head>
     <body>
-<p> Hello world </p>
+<p> Hello world. </p>
 
     </body>
 </html>
