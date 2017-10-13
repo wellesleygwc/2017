@@ -7,8 +7,12 @@ near_hundred(90) => True
 near_hundred(89) => False
 """
 def near_hundred(n):
-  # Your code here...
-  return  # ...and here.
+  if n>=90 and n<=110:
+    return "True"
+  if n>=190 and n<=210:
+    return "True"
+  else:
+    return "False"
 
 
 print near_hundred(93)
