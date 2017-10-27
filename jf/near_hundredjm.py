@@ -9,9 +9,9 @@ near_hundred(89) => False
 
 
 def near_hundred(n):
-    if n+10 > 100:
+    if n+10 >= 100:
         return True
-    n+10 < 100
+    100 >= n + 10
     return False
 
 
