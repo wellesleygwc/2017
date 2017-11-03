@@ -9,14 +9,17 @@ pos_neg(-4, -5, True) => True
 
 
 def pos_neg(a, b, negative):
+
+    if negative == True :
+        if a < 0:
+            if b < 0:
+             return True
+
     if a*b >= 0:
-      return False
-        if negative
+        return False
 
     if a*b <= 0:
       return True
-
-
 
 
 
