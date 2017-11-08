@@ -13,3 +13,4 @@ def pos_neg(a, b, negative):
 print pos_neg(1, -1, False)
 print pos_neg(-1, 1, False)
 print pos_neg(-4, -5, True)
+print pos_neg(1, -1, True)  # I think this should return False
