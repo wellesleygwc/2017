@@ -1,1 +1,4 @@
 .idea
+web-site-template/app/__init__.pyc
+web-site-template/app/db.pyc
+web-site-template/static/web-site.db
