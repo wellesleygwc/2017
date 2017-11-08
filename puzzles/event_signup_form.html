@@ -1,60 +1,121 @@
+<!--
+In the form below, select an appropriate input type for the fields.
+
+Search for <input> tags and set the "type" attribute.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Volunteer Event Signup</title>
     <style>
-        form {
-          border: 1px solid black;
+    form {
+          width: 500px;
+          /* To see the outline of the form */
+          padding: 1em;
+          border: 1px solid #CCC;
+          border-radius: 1em;
         }
-        .form-input {
-            padding-left: 10px;
+
+        form div + div {
+          margin-top: 1em;
+        }
+
+        label {
+          /* To make sure that all labels have the same size and are properly aligned */
+          display: inline-block;
+          width: 150px;
+          text-align: right;
+        }
+
+        .option-label {
+          display: inline-block;
+          width: 250px;
+        }
+
+        input, textarea {
+          /* To make sure that all text fields have the same font settings
+             By default, textareas have a monospace font */
+          font: 1em sans-serif;
+
+          /* To give the same size to all text fields */
+          width: 300px;
+          box-sizing: border-box;
+
+          /* To harmonize the look & feel of text field border */
+          border: 1px solid #999;
+        }
+
+        input:focus, textarea:focus {
+          /* To give a little highlight on active elements */
+          border-color: #000;
+        }
+
+        .button {
+          /* To position the buttons to the same position of the text fields */
+          padding-left: 90px; /* same size as the label elements */
+        }
+
+        button {
+          /* This extra margin represent roughly the same space as the space
+             between the labels and their text fields */
+          margin-left: .5em;
+        }
+        ul {
+          list-style-type: none;
         }
     </style>
 </head>
 <body>
     <h1>Fall Festival</h1>
 
-    <h3>Registration table</h3></div>
-    <div class="indent">
-      <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 11/16/2017  10 am - 12 noon  </div>
-    </div>
-    <div class="indent">
-      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 2 credits    </div>
-  </div>
+    <h3>November 16, 2017</h3>
+
 
 <p style="padding-top: 10px">Please enter your information below to volunteer.</p>
-<form action="thankyou.html" method="post" accept-charset="utf-8" class="form-horizontal">
+<form action="thankyou.html" method="post" accept-charset="utf-8">
+    <fieldset>
+
+        <!-- There are multiple time slot options that volunteers may select. -->
+      <legend>Registration table hours</legend>
+      <ul>
+          <li><div>
+            <label class="option-label" for="reg_table_1">
+              <input type="" id="reg_table_1" name="task" value="reg_10_12" >
+              10 AM - 12 noon (2 credits)
+            </label></div>
+          </li>
+          <li>
+            <label class="option-label" for="reg_table_2">
+              <input type="" id="reg_table_2" name="task" value="reg_12_2">
+              12 noon - 2 pm (2 credits)
+            </label>
+          </li>
+      </ul>
+    </fieldset>
     <div>
-    <div class="form-input">
+    </div>
+    <div>
       <label for="firstname">First name</label>
-      <div class="form-input">
-          <input type="" name="firstname" maxlength="128" value="" id="firstname" placeholder="First name"/>
-      </div>
+          <input type="" name="firstname" value="" id="firstname" placeholder="First name"/>
     </div>
-    <div class="form-input">
+    <div>
       <label for="lastname">Last name</label>
-      <div class="form-input">
-          <input type="" name="lastname" maxlength="128" value="" id="lastname" placeholder="Last name"/>
-      </div>
+        <input type="" name="lastname" value="" id="lastname" placeholder="Last name"/>
     </div>
 
-    <div class="form-input">
+    <div>
       <label for="email">Email</label>
-      <div class="form-input">
-        <input type="" name="email" maxlength="150" value="" id="email" placeholder="Your Email (for volunteer coordinator)"/>
-          </div>
+        <input type="" name="email" value="" id="email" placeholder="Your Email (for volunteer coordinator)"/>
     </div>
 
-    <div class="form-input">
+    <div >
       <label for="phone">Phone</label>
-      <div class="form-input">
-          <input type="" name="phone" maxlength="64" value="" id="phone" placeholder="Your Phone (for volunteer coordinator)"/>
-            </div>
+          <input type="" name="phone" value="" id="phone" placeholder="Your Phone (for volunteer coordinator)"/>
     </div>
 
     <br>
-        <div class="form-input">
+        <div >
            <input type="" value="Sign up" onclick="this.disabled=true; this.form.submit();"/>
         </div>
     </div>
