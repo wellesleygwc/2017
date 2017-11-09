@@ -8,11 +8,11 @@ missing_char('kitten', 1) => 'ktten'
 missing_char('kitten', 0) => 'itten'
 missing_char('kitten', 4) => 'kittn'
 """
-def missing_char.py(str, n):
+def missing_char(str, n):
   # Your code here
-  return  # and here
+  return "" # and here
 
 
-print missing_char('kitten', 1)
-print missing_char('kitten', 0)
-print missing_char('kitten', 4)
+assert missing_char('kitten', 1) == 'ktten'
+assert missing_char('kitten', 0) == 'itten'
+assert missing_char('kitten', 4) == 'kitten'
