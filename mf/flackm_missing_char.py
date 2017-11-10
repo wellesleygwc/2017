@@ -8,11 +8,11 @@ missing_char('kitten', 1) => 'ktten'
 missing_char('kitten', 0) => 'itten'
 missing_char('kitten', 4) => 'kittn'
 """
-def missing_char(str, n):
-  # Your code here
-  return "" # and here
+def missing_char (str, n):
+
+  return str[:n] + str[n+1:]
 
 
-assert missing_char('kitten', 1) == 'ktten'
-assert missing_char('kitten', 0) == 'itten'
-assert missing_char('kitten', 4) == 'kitten'
+print missing_char('kitten', 1)
+print missing_char('kitten', 0)
+print missing_char('kitten', 4)
