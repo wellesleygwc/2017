@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home Page</title>
+    </head>
+    <body>
+        <p1 id="p1">Home Page</p1>
+        <p id="Awe">awesomness</p>
+
+    <script>
+        alert("hello world welcome to our wonderful website...");
+        var p1=document.getElementById("p1");
+        p1.innerHTML=":)";
+        p1.style.color= "blue";
+
+        var Awe= document.getElementById("Awe");
+
+
+
+function handleClick(event)
+      {
+        Awe.style.display="none";
+
+        return false; // prevent further bubbling of event
+      }
+    </script>
+
+      <form name="myform" onSubmit="JavaScript:handleClick()">
+      <input name="Submit"  type="submit" value="Update" onClick="JavaScript:handleClick(); return false;"/>
+       </form>
+
+    </body>
+</html>
