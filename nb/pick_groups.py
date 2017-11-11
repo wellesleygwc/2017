@@ -21,7 +21,7 @@ member_prefs = {
   'lucyh': [HTML, CSS, JS, DB, SERVER],
   'ruari': [JS, HTML, SERVER, DB, CSS],
   'meghan': [DB, SERVER, HTML, CSS, JS],
-  'jade': [HTML, CSS, SERVER, JS, DB]
+  'jademei': [HTML, CSS, SERVER, JS, DB]
 }
 
 MAX_GROUP_SIZE = 2
