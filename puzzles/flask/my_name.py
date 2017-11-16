@@ -6,8 +6,8 @@ Copy this file to your directory, then modify it so that
 going to "/name" displays your name on the web page.
 """
 @app.route('/')
-def bye():
-    return 'Hello, World!'
+def hello():
+  return 'Hello, World!'
 
 if __name__ == '__main__':
-    app.run()
+  app.run()
