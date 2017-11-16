@@ -1,0 +1,27 @@
+<!--
+Print two lists with any information you want.
+One list should be an ordered list, the other list should be an unordered list.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peekaboo</title>
+    </style>
+</head>
+<body>
+
+    <a href="." onclick="return peekaboo('p')">Peekaboo</a>
+    <p1 id="p" hidden="true">I see you</p1>
+
+    <script>
+        function peekaboo(id) {
+            var e = document.getElementById(id);
+            e.hidden = !e.hidden;
+            return false;
+        }
+    </script>
+
+</body>
+</html>
