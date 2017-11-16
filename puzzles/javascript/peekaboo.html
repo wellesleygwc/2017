@@ -1,6 +1,9 @@
 <!--
-Print two lists with any information you want.
-One list should be an ordered list, the other list should be an unordered list.
+Modify the JavaScript in the peekaboo function to:
+1) Change the color of the element that is being made visible
+2) Change its font size
+3) Change its font to bold
+4) Change its font to italic
 -->
 
 <!DOCTYPE html>
@@ -8,17 +11,26 @@ One list should be an ordered list, the other list should be an unordered list.
 <head>
     <meta charset="UTF-8">
     <title>Peekaboo</title>
-    </style>
 </head>
 <body>
 
-    <a href="." onclick="return peekaboo('p')">Peekaboo</a>
-    <p1 id="p" hidden="true">I see you</p1>
+    <!-- Each time you click this link, it hides/shows the p1 element just below it -->
+    <a href="." onclick="peekaboo('p'); return false;">Peekaboo</a>
+
+    <!-- This is the p1 element that gets hidden/shown each time you click the link above -->
+    <p1 id="p" style="visibility: hidden;">I see you</p1>
 
     <script>
+        // This Javascript function hides an element that is currently visible or
+        // makes an element that is hidden visible.
         function peekaboo(id) {
             var e = document.getElementById(id);
-            e.hidden = !e.hidden;
+            if (e.style.visibility == "hidden") {
+                e.style.visibility = "visible";
+            }
+            else {
+                e.style.visibility = "hidden";
+            }
             return false;
         }
     </script>
