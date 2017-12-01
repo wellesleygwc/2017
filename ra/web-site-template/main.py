@@ -7,7 +7,7 @@ from app import db
 
 app = Flask(__name__)
 
-HOME_PAGE = 'Home_Page_18.html'
+HOME_PAGE = 'index.html'
 
 # Home page
 @app.route('/')
@@ -19,11 +19,6 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template("updatename.html")
-
-# About page
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 # Start the application
 if __name__== "__main__":
