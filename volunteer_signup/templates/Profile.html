@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Profile</title>
+      <link rel="stylesheet" type="text/css" href="static/stylesheet.css">
+<ul>
+    <li><img src="static/logo.png" alt="Girls Who Code" width="300"></li>
+    <li style="float:left" ><a id="home" href="home"> Home </a></li>
+    <li style="float:right"><a href="index.html">Sign Out</a> </li>
+</ul>
+  </head>
+  <body>
+  <div align="center">
+    <h1 id="header" align="middle">Update Your Name or Password</h1>
+    <form action="change name" method="post">
+
+        <h4> Email </h4>
+    <input type="email" name="new_email" placeholder="" value={{email}}><br>
+        <h4> First Name </h4>
+    <input type="email" name="new_first_name" placeholder="" value={{first_name}}><br>
+        <h4> Last Name </h4>
+    <input type="email" name="new_last_name" placeholder="" value={{last_name}}><br>
+        <br>
+      <input type="submit" name="Update Name and Email">
+    </form>
+
+<br><br>
+
+    <form action="change password" method="post">
+        <h4> Old Password </h4>
+    <input type="password" name="original_password" placeholder="Original password" value=""><br>
+        <h4> New Password </h4>
+    <input type="password" name="new_password" placeholder="New password" value=""><br>
+        <h4> Confirm New Password </h4>
+    <input type="password" name="confirm_password" placeholder="Confirm password" value=""><br> <br>
+      <input type="submit" name="Change Password">
+</form>
+
+        <br>
+        <br>
+<h3> Delete Your Account</h3>
+        <p> Click here to delete your account! </p>
+
+
+    <br><br><br><br><br><br><br>
+    <p4>  © 2017-18 Girls Who Code - Wellesley Chapter </p4>
+
+  </div>
+</body>

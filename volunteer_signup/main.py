@@ -20,6 +20,10 @@ def home():
 def login():
     return render_template("updatename.html")
 
+@app.route('/Profile', methods=['GET', 'POST'])
+def profile():
+    return render_template("Profile.html")
+
 # About page
 @app.route('/about')
 def about():
