@@ -2,12 +2,12 @@
 
 # Imports
 from flask import Flask, render_template, redirect, url_for, request, session
-import os, sys
+#import os, sys
 from app import db
 
 app = Flask(__name__)
 
-HOME_PAGE = 'Home_Page_18.html'
+HOME_PAGE = 'index.html'
 
 # Home page
 @app.route('/')
