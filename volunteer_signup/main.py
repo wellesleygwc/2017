@@ -20,6 +20,11 @@ def home():
 def login():
     return render_template("updatename.html")
 
+# About page
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 # Start the application
 if __name__== "__main__":
     db.create_db()
