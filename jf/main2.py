@@ -2,7 +2,7 @@
 
 # Imports
 from flask import Flask, render_template, redirect, url_for, request, session
-import os, sys
+#import os, sys
 from app import db
 
 app = Flask(__name__)
