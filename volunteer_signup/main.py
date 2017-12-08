@@ -7,7 +7,7 @@ from app import db
 
 app = Flask(__name__)
 
-HOME_PAGE = 'Home_Page_18.html'
+HOME_PAGE = 'about.html'
 
 # Home page
 @app.route('/')
