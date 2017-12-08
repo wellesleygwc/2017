@@ -11,10 +11,11 @@
 <style>
     form {
 
-          width: 500px;
+          width: 450px;
           /* To see the outline of the form */
-          padding: 11em;
+          padding: 9em;
           border: 1px solid #CCC;
+          background-color: #FFF5EE;
         }
 
         form div + div {
@@ -33,30 +34,45 @@
           width: 250px;
         }
 
-        input, textarea {
-          /* To make sure that all text fields have the same font settings
-             By default, textareas have a monospace font */
-          font: 1em palatino;
 
-          /* To give the same size to all text fields */
-          width: 300px;
-          box-sizing: border-box;
+        #Submit {
+                  /* To make sure that submit button font is palatino*/
+                  font: 1em palatino;
 
-          /* To harmonize the look & feel of text field border */
-          border: 1px solid #999;
-        }
+                  /* To give the same size to all text fields */
+                  width: 80px;
+                  box-sizing: border-box;
 
-        input:focus, textarea:focus {
-          /* To give a little highlight on active elements */
-          border-color: #000;
-        }
+                  /* To harmonize the look & feel of text field border */
+                  border: 1px solid #999;
+                }
+
+                input:focus, textarea:focus {
+                  /* To give a little highlight on active elements */
+                  border-color: #000;
+                }
+
+        #Username, #Password {
+
+                  /* To make sure that all text fields are palatino*/
+                  font: 1em palatino;
+
+                  /* To give the same size to all text fields */
+                  width: 300px;
+                  box-sizing: border-box;
+
+                  /* To harmonize the look & feel of text field border */
+                  border: 1px solid #999;
+                }
+
+                input:focus, textarea:focus {
+                  /* To give a little highlight on active elements */
+                  border-color: #000;
+                }
 
         .button {
           /* To position the buttons to the same position of the text fields */
           padding-left: 90px; /* same size as the label elements */
-        }
-        p_signup {
-          bottom: 20px;
         }
 
         button {
@@ -69,7 +85,7 @@
 
 <center>
     <form style="align: center;">
-        <center><h1 style="font-family:palatino;">Login Page</h1></center>
+        <center><h1 style="font-family:palatino;">Login</h1></center>
 
         <p class="break" />
 
@@ -88,9 +104,18 @@
 
 
         <div>
+          <center><label style="font-family:palatino;">
+              <input type="submit" value="Submit" id="Submit"></input></label></center>
+        </div>
 
-            <p_signup style="font-family:palatino;"
-                      style="position: absolute; top:80px; left:400px; width:200px; height:25px">
+        <div>
+
+            <p_forgot style="font-family:palatino;">
+                Forgot your Username or Password?</p_forgot></div>
+
+        <p class="break">
+
+            <p_signup style="font-family:palatino;">
                 Don't already have an account? Sign up here.</p_signup></div>
 
 

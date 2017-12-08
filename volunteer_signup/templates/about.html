@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Volunteer Sign Up</title>
-    <link href="www.volunteersignup.org/css/bootstrap.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
@@ -192,15 +192,15 @@ background-color: #004aa7;
   </style>
 
 </head>
-<body onscroll="myFunction()">
-<div id="mySidenav" class="sidenav">
+<body <!--onscroll="myFunction()"-->>
+<!--<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#about">About</a>
   <a href="#contact">Contact</a>
   <a href="#help">Help</a>
 
-</div>
-<script>
+</div>-->
+<!--<script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
@@ -208,8 +208,8 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
-</script>
-<div class="topnav">
+</script>-->
+<!--<div class="topnav">
 
     <table>
         <tr>
@@ -252,7 +252,8 @@ function closeNav() {
 <div style="padding-left:16px">
 </div>
 </div>
-
+-->
+{% include 'menu.html' %}
     <div class="page" >
 
     <table>
