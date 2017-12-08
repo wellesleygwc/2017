@@ -35,7 +35,6 @@ def read_table1(column1_value):
 
     return row[0]
 
-
 def update_table1(column1_value, column2_new_value):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
@@ -44,3 +43,25 @@ def update_table1(column1_value, column2_new_value):
     cursor.execute("UPDATE table1 SET colum2='%s' WHERE column1='%s'" % (column2_new_value, column1_value))
 
     connection.close()
+
+def add_volunteer(name, password, email, phone):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Add a volunteer to the volunteers table
+    cursor.execute("INSERT INTO volunteers VALUES('%s', '%s', '%s', '%s')" % (name, password, email, phone))
+
+    connection.close()
+
+def list_events():
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Retrieve all the events
+    cursor.execute("SELECT * FROM events")
+    rows = cursor.fetchall()
+
+    connection.close()
+
+    return rows
+
