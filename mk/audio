@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<audio
+  src="apple_crisp_music.mp3"
+  autoplay>
+  Your browser does not support the <code>audio</code> element.
+</audio>

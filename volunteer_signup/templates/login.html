@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+
+
+<style>
+    form {
+
+          width: 500px;
+          /* To see the outline of the form */
+          padding: 11em;
+          border: 1px solid #CCC;
+        }
+
+        form div + div {
+          margin-top: 1em;
+        }
+
+        label {
+          /* To make sure that all labels have the same size and are properly aligned */
+          display: inline-block;
+          width: 100px;
+          text-align: right;
+        }
+
+        .option-label {
+          display: inline-block;
+          width: 250px;
+        }
+
+        input, textarea {
+          /* To make sure that all text fields have the same font settings
+             By default, textareas have a monospace font */
+          font: 1em palatino;
+
+          /* To give the same size to all text fields */
+          width: 300px;
+          box-sizing: border-box;
+
+          /* To harmonize the look & feel of text field border */
+          border: 1px solid #999;
+        }
+
+        input:focus, textarea:focus {
+          /* To give a little highlight on active elements */
+          border-color: #000;
+        }
+
+        .button {
+          /* To position the buttons to the same position of the text fields */
+          padding-left: 90px; /* same size as the label elements */
+        }
+        p_signup {
+          bottom: 20px;
+        }
+
+        button {
+          /* This extra margin represent roughly the same space as the space
+             between the labels and their text fields */
+          margin-left: .5em;
+        }
+</style>
+
+
+<center>
+    <form style="align: center;">
+        <center><h1 style="font-family:palatino;">Login Page</h1></center>
+
+        <p class="break" />
+
+          <label style="font-family:palatino;"
+                 for="Username"> Username: </label>
+        <input type="" name="Username" value="" id="Username" placeholder="Enter your email address"/>
+        </div>
+
+        <p class="break">
+
+        <div>
+          <label style="font-family:palatino;"
+                 for="Password">Password: </label>
+            <input type="" name="Password" value="" id="Password" placeholder="Enter your password"/>
+        </div>
+
+
+        <div>
+
+            <p_signup style="font-family:palatino;"
+                      style="position: absolute; top:80px; left:400px; width:200px; height:25px">
+                Don't already have an account? Sign up here.</p_signup></div>
+
+
+
+    </form>
+</center>
+
+
+</body>
+</html>
