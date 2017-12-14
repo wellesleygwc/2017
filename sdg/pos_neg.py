@@ -12,15 +12,15 @@ def pos_neg(a, b, negative):
         return True
     }
     else {
-        return False
+        return False;
   }
   }
   elif negative = True{
     if a < 0 and b < 0 {
-        return True
+        return True;
     }
     else {
-        return False
+        return False;
     }
   }
   return  # ...and here.
