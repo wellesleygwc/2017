@@ -1,0 +1,27 @@
+<!--
+Modify the JavaScript in the OnClick function to:
+1) Change the paragraph's font size
+2) Change its font to bold
+3) Change its font to italic
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript in HTML Example</title>
+</head>
+<body>
+
+    <p id="me" style="color: blue" onclick="OnClick('me');">Click Me!</p>
+
+    <script>
+        function OnClick(id) {
+            var e = document.getElementById(id);
+            e.textContent='You Clicked Me!';
+            e.style.color = 'red';
+        }
+    </script>
+
+</body>
+</html>

@@ -13,7 +13,7 @@ HOME_PAGE = 'Events.html'
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template(HOME_PAGE)
+    return render_template(HOME_PAGE, events=db.list_events())
 
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])

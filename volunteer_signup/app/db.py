@@ -15,6 +15,18 @@ def create_db():
                    ", column3 int not null default 0)")
     cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
 
+# Create and populate your database tables. Here's an example to get you started.
+    cursor.execute("drop table if exists volunteerhoursummary")
+    cursor.execute("create table if not exists volunteerhoursummary("+
+                   "column1 text primary key not null" +
+                   ", column2 text not null" +
+                   ", column3 int not null default 0)")
+    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+
     # Save (commit) the changes
     connection.commit()
 

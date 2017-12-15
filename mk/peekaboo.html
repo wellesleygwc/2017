@@ -1,0 +1,39 @@
+<!--
+Modify the JavaScript in the peekaboo function to:
+1) Change the color of the element that is being made visible
+2) Change its font size
+3) Change its font to bold
+4) Change its font to italic
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peekaboo</title>
+</head>
+<body>
+
+    <!-- Each time you click this link, it hides/shows the p1 element just below it -->
+    <a href="." onclick="peekaboo('p'); return false;">Peekaboo</a>
+
+    <!-- This is the p1 element that gets hidden/shown each time you click the link above -->
+    <p1 id="p" style="visibility: hidden;">I see you</p1>
+
+    <script>
+        // This Javascript function hides an element that is currently visible or
+        // makes an element that is hidden visible.
+        function peekaboo(id) {
+            var e = document.getElementById(id);
+            if (e.style.visibility == "hidden") {
+                e.style.visibility = "visible";
+            }
+            else {
+                e.style.visibility = "hidden";
+            }
+            return false;
+        }
+    </script>
+
+</body>
+</html>
