@@ -18,7 +18,7 @@ def home():
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template("updatename.html")
+    return render_template("login.html")
 
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():
