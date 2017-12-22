@@ -2,3 +2,6 @@
 web-site-template/app/__init__.pyc
 web-site-template/app/db.pyc
 web-site-template/static/web-site.db
+volunteer_signup/app/__init__.pyc
+volunteer_signup/app/db.pyc
+volunteer_signup/static/web-site.db
