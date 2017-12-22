@@ -15,6 +15,15 @@ def create_db():
                    ", column3 int not null default 0)")
     cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
 
+    cursor.execute("drop table if exists events")
+    cursor.execute("create table if not exists events("+
+                   "description text primary key not null" +
+                   ", date text not null" +
+                   ", credits int not null default 0)")
+    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the club on a CS topic', '11/2/2017', 2)")
+
+    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the Club on a CS topic', '11/9/2017', 3)")
+
     # Save (commit) the changes
     connection.commit()
 
@@ -44,3 +53,17 @@ def update_table1(column1_value, column2_new_value):
     cursor.execute("UPDATE table1 SET colum2='%s' WHERE column1='%s'" % (column2_new_value, column1_value))
 
     connection.close()
+
+def list_events():
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Retrieve all the events
+    cursor.execute("SELECT * FROM events")
+    rows = cursor.fetchall()
+
+    print (rows)
+
+    connection.close()
+
+    return rows

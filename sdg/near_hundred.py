@@ -7,19 +7,13 @@ near_hundred(90) => True
 near_hundred(89) => False
 """
 def near_hundred(n):
-  if n - 100 > -10 :{
-    return True
-  }
-  elif n - 100 = -10 :{
-    return True
-  }
-  elif n - 200 = -10 :{
-    return True
-}
+  if (n-100) > -10;
+    print True
+  elif (n-100) = -10;
+    print True
+  elif (n-200) = -10;
+    print True
 
-
-
-  return  # ...and here.
 
 
 print near_hundred(93)
