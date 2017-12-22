@@ -15,6 +15,13 @@ def create_db():
                    ", column3 int not null default 0)")
     cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
 
+    # Create and populate your database tables. Here's an example to get you started.
+    cursor.execute("drop table if exists users")
+    cursor.execute("create table if not exists users("+
+                   "username text primary key not null" +
+                   ", password text not null)")
+    cursor.execute("insert or ignore into users values ('value1', 'value2')")
+
 # Create and populate your database tables. Here's an example to get you started.
     cursor.execute("drop table if exists volunteerhoursummary")
     cursor.execute("create table if not exists volunteerhoursummary("+
@@ -47,6 +54,12 @@ def read_table1(column1_value):
 
     return row[0]
 
+def adduser(username, password):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("insert or ignore into users values ('%s', '%s')" % (username, password))
+
+    connection.close()
 
 def update_table1(column1_value, column2_new_value):
     connection = sqlite3.connect(database_file)
