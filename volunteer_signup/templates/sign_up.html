@@ -5,16 +5,21 @@
     <title>Create an Account</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/menustyle.css" type="text/css">
+
 </head>
 
 <body>
 <fieldset>
-    <legend>Create an Account</legend>
-<p>[Insert text here about needing to fill out personal information in order to create a volunteer account]</p>
+    <legend><h2>Create an Account</h2></legend>
+<p>Please fill out the following in order to set up an account.</p>
 <form method="post">
 Enter Username: <input type="text" placeholder="Username" name="username" value="{{request.form.username}} "><br>
 Enter Password: <input type="text" placeholder="Password" name="password"> <!--value="{{request.form.password}} "--><br>
 Repeat Password: <input type="text" placeholder="Repeat Password" name="password2"><br>
+Personal Information: <input type="text" placeholder="First Name" name="firstname"><br>
+<input type="text" placeholder="Last Name" name="lastname">
+Email Address:
+Phone Number:
 <input type="submit">
 </form>
 </fieldset>
