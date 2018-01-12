@@ -1,86 +1,291 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title>Login</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/homestyle.css" type="text/css">
 </head>
+
 <body>
 
 
 
+=======
+    <title>Volunteer Sign Up</title>
+    <!--<link href="www.volunteersignup.org/css/bootstrap.min.css" rel="stylesheet">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+>>>>>>> 962a175d5740ae5c0a4aa15b58595534d910a919
 <style>
-    form {
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+h1
+{
+font-size: 50px;
+}
+    h3,h4
+    {
+    font-weight: 500;
+    }
+    * {box-sizing: border-box;}
+    body {
+    font-family: "Lato", sans-serif;
+}
 
-          width: 450px;
-          /* To see the outline of the form */
-          padding: 9em;
-          border: 1px solid #CCC;
-          background-color: #FFF5EE;
-        }
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #4e78dc;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
 
-        form div + div {
-          margin-top: 1em;
-        }
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+}
+.sidenav a:hover {
+    color: #000000;
+    background-color: #dcbd43;
+}
 
-        label {
-          /* To make sure that all labels have the same size and are properly aligned */
-          display: inline-block;
-          width: 100px;
-          text-align: right;
-        }
+.sidenav .closebtn {
+    position: absolute;
+    top: 0%;
+    right: 5%;
+    font-size: 36px;
+    margin-left: 50px;
+}
 
-        .option-label {
-          display: inline-block;
-          width: 250px;
-        }
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 18px;}
+  .sidenav a {font-size: 18px;}
+}
 
 
-        #Submit {
-                  /* To make sure that submit button font is palatino*/
-                  font: 1em palatino;
+* {box-sizing: border-box;}
 
-                  /* To give the same size to all text fields */
-                  width: 80px;
-                  box-sizing: border-box;
+body {
+  margin: 0;
+  font-family: Arial;
+}
 
-                  /* To harmonize the look & feel of text field border */
-                  border: 1px solid #999;
-                }
+.page body {
+background-color: #ffffff
+}
 
-                input:focus, textarea:focus {
-                  /* To give a little highlight on active elements */
-                  border-color: #000;
-                }
+.secondnav {
+overflow: hidden;
+background-color: #004aa7;
+}
 
-        #Username, #Password {
+.topnav {
+  overflow: hidden;
+  background-color: #dcbd43;
+}
 
-                  /* To make sure that all text fields are palatino*/
-                  font: 1em palatino;
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 25px 25px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
-                  /* To give the same size to all text fields */
-                  width: 300px;
-                  box-sizing: border-box;
+.secondnav a:hover {
+  background-color: #4e7fff;
+  color: black;
+}
 
-                  /* To harmonize the look & feel of text field border */
-                  border: 1px solid #999;
-                }
+.secondnav a.active {
+  background-color: #4e78dc;
+  color: white;
+}
 
-                input:focus, textarea:focus {
-                  /* To give a little highlight on active elements */
-                  border-color: #000;
-                }
+.secondnav .search-container {
+  float: right;
+}
 
-        .button {
-          /* To position the buttons to the same position of the text fields */
-          padding-left: 90px; /* same size as the label elements */
-        }
+.secondnav .content {
+  padding: 16px;
+}
 
-        button {
-          /* This extra margin represent roughly the same space as the space
-             between the labels and their text fields */
-          margin-left: .5em;
-        }
-</style>
+.secondnav .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.secondnav .sticky + .content {
+  padding-top: 60px;
+}
+
+
+.topnav input[type=text]{
+  padding: 6px;
+  margin-top: 20px;
+  font-size: 17px;
+  border: none;
+}
+
+.secondnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 20px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.secondnav .search-container button:hover {
+  background: #4e78dc;
+}
+
+@media screen and (max-width: 100px) {
+  .secondnav .search-container {
+    float: none;
+  }
+  .secondnav a, .secondnav input[type=text], .secondnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100px;
+    margin: 0;
+    padding: 14px 18px;
+  }
+  .secondnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+  .page {
+  padding: 16px;
+  }
+  .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+  }
+
+  .sticky + .page {
+  padding-top: 60px;
+  }button.submit {
+    background-color: #eee;
+    color: #360;
+    cursor: pointer;
+    padding-top: 500%;
+    width: 50%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.submit.active, button.submit:hover {
+    background-color: #00e600;
+}
+
+  </style>
+
+</head>
+<body onscroll="myFunction()">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#help">Help</a>
+
+</div>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+
+
+
+
+
+
+
+
+<div class="topnav">
+
+    <table>
+        <tr>
+            <td width="300px">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#help">Help</a>
+                </div>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
+                </span>
+                <img src="https://www.volunteersignup.org/images/square_logo.svg" width="50px">
+                <strong style="font-size:20px">Volunteer Sign Up
+                </strong>
+            </td>
+            <td width="500">
+            </td>
+            <td width="300px" align="right">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p><strong>Helping is EASY Now</strong></p>
+            </td>
+            <td width="300px" align="right">
+            </td>
+        </tr>
+    </table>
+<div class="secondnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#signin">Sign In</a>
+    <a href="#help">Help</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search..." name="search">
+            <button type="Submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+<div style="padding-left:16px">
+</div>
+</div>
+<script>
+var secondnav = document.getElementbyId("secondnav");
+var sticky = secondnav.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    secondnav.classList.add("sticky")
+  } else {
+    secondnav.classList.remove("sticky");
+  }
+}
+</script>
+
 
 
 <center>
@@ -90,7 +295,7 @@
         <p class="break" />
 
           <label style="font-family:palatino;"
-                 for="Username"> Username: </label>
+                 for="Username">Username: </label>
         <input type="" name="Username" value="" id="Username" placeholder="Enter your email address"/>
         </div>
 
@@ -105,7 +310,8 @@
 
         <div>
           <center><label style="font-family:palatino;">
-              <input type="submit" value="Submit" id="Submit"></input></label></center>
+              <button class="submit">Submit</button>
+              <!--<input type="submit" value="Submit" id="Submit"></input></label></center>-->
         </div>
 
         <div>
