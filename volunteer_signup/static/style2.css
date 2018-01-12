@@ -34,7 +34,6 @@ a:link, a:visited {
     color: #FFFFFF;
     background-color: #4c4c4c;
     text-align: center;
-    /*padding: 4px;*/
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -43,8 +42,4 @@ a:hover, a:active {
     background-color: #191919;
 }
 
-#home {
-    background-color: #74E8CB;
-    a:hover, a:active {
-        background-color: #379E84;
-    }
+

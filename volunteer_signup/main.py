@@ -18,7 +18,22 @@ def home():
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template("updatename.html")
+    if request.method == 'POST':
+        print(request.form['Username'])
+    return render_template("login.html")
+
+# Sign up page. Until we have a login page, go to the home page instead.
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        print(request.form['username'])
+        username=request.form['username']
+        password=request.form['password']
+        password2=request.form['password2']
+        if password==password2:
+            db.adduser(username, password)
+            print("password don't match")
+    return render_template("sign_up.html")
 
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():
