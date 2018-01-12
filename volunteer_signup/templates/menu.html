@@ -1,191 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" type="text/css" href="static/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="static/menustyle.css">
 
 <style>
 
-
-button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 21%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-}
-
-button.accordion.active, button.accordion:hover {
-    background-color: #00e600;
-}
-
-div.panel {
-    padding: 0 18px;
-    display: none;
-    background-color: white;
-}
-
-    h3,h4
-    {
-    font-weight: 500;
-    }
-    * {box-sizing: border-box;}
-    body {
-    font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #4e78dc;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #000000;
-    display: block;
-    transition: 0.3s;
-}
-.sidenav a:hover {
-    color: #000000;
-    background-color: #4e78dc;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-
-* {box-sizing: border-box;}
-
-body {
-  margin: 0;
-  font-family: Arial;
-}
-
-.page body {
-background-color: #ffffff
-}
-
-.secondnav {
-overflow: hidden;
-background-color: #004aa7;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #dcbd43;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 25px 25px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.secondnav a:hover {
-  background-color: #ffd699;
-  color: black;
-}
-
-.secondnav a.active {
-  background-color: #4e78dc;
-  color: white;
-}
-
-.secondnav .search-container {
-  float: right;
-}
-
-.secondnav .content {
-  padding: 16px;
-}
-
-.secondnav .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-
-.secondnav .sticky + .content {
-  padding-top: 60px;
-}
-
-
-.topnav input[type=text]{
-  padding: 6px;
-  margin-top: 20px;
-  font-size: 17px;
-  border: none;
-}
-
-.secondnav .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 20px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.secondnav .search-container button:hover {
-  background: #4e78dc;
-}
-
-@media screen and (max-width: 100px) {
-  .secondnav .search-container {
-    float: none;
-  }
-  .secondnav a, .secondnav input[type=text], .secondnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100px;
-    margin: 0;
-    padding: 14px 18px;
-  }
-  .secondnav input[type=text] {
-    border: 1px solid #ccc;
-  }
-  .page {
-  padding: 16px;
-  }
-  .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-  }
-
-  .sticky + .page {
-  padding-top: 60px;
-  }
   </style>
 <body>
 <div class="topnav">
@@ -195,13 +13,14 @@ background-color: #004aa7;
             <td width="300px">
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="Profile.html"> Profile </a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                     <a href="#help">Help</a>
                 </div>
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
                 </span>
-                <img src="static/narwhal.png" width="50px">
+                <img src="static/narwhal2.png" width="59px">
                 <strong style="font-size:20px">Volunteer Sign Up
                 </strong>
             </td>
@@ -216,7 +35,8 @@ background-color: #004aa7;
         </tr>
     </table>
 <div class="secondnav">
-    <a class="active" href="#home">Home</a>
+    <a class="active" href="home">Home</a>
+    <a href="Profile"> Profile </a>
     <a href="#signin">Sign In</a>
     <a href="#help">Help</a>
     <a href="#about">About</a>
