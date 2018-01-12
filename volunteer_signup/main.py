@@ -18,6 +18,8 @@ def home():
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        print(request.form['Username'])
     return render_template("login.html")
 
 # Sign up page. Until we have a login page, go to the home page instead.
