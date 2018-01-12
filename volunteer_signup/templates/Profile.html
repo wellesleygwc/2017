@@ -1,14 +1,10 @@
 <html>
   <head>
     <title>Profile</title>
-      <link rel="stylesheet" type="text/css" href="static/stylesheet.css">
-<ul>
-    <li><img src="static/logo.png" alt="Girls Who Code" width="300"></li>
-    <li style="float:left" ><a id="home" href="home"> Home </a></li>
-    <li style="float:right"><a href="index.html">Sign Out</a> </li>
-</ul>
+      <link rel="stylesheet" href="static/style2.css" type="text/css">
   </head>
   <body>
+  {% include 'menu.html' %}
   <div align="center">
     <h1 id="header" align="middle">Update Your Name or Password</h1>
     <form action="change name" method="post">

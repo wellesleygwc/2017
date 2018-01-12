@@ -1,14 +1,56 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="static/stylesheet.css">
-<div style="
-text-align: center;">
-    <ul>
-    <li><img src="static/logo.png" alt="Girls Who Code" width="300"></li>
-        <li><a ID="home" href="home">Home</a></li>
-        <li><a ID="links" href="archives">Archives</a> </li>
-        <li><a ID="links" href="profile">Profile</a></li>
-        <li><a ID="links" href="logout">Logout</a></li>
-    </ul>
-</div>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="static/menustyle.css">
 
+<style>
+
+  </style>
+<body>
+<div class="topnav">
+
+    <table>
+        <tr>
+            <td width="300px">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="Profile.html"> Profile </a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#help">Help</a>
+                </div>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
+                </span>
+                <img src="static/narwhal2.png" width="59px">
+                <strong style="font-size:20px">Volunteer Sign Up
+                </strong>
+            </td>
+            <td width="500">
+            </td>
+            <td width="300px" align="right">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p><strong>Helping is EASY Now</strong></p>
+            </td>
+            <td width="300px" align="right">
+            </td>
+        </tr>
+    </table>
+<div class="secondnav">
+    <a class="active" href="home">Home</a>
+    <a href="Profile"> Profile </a>
+    <a href="#signin">Sign In</a>
+    <a href="#help">Help</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search..." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+<div style="padding-left:16px">
+</div>
+</div>
+</body>
+</html>
 

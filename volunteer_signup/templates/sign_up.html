@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Account</title>
+</head>
+<body>
+<h1>Create an Account</h1>
+<p>[Insert text here about needing to fill out personal information in order to create a volunteer account]</p>
+<form method="post">
+Enter Username: <input type="text" placeholder="Username" name="username" value="{{request.form.username}} ">
+Enter Password: <input type="text" placeholder="Password" name="password"> <!--value="{{request.form.password}} "-->
+Repeat Password: <input type="text" placeholder="Repeat Password" name="password2">
+<input type="submit">
+</form>
+</body>
+</html>
+
