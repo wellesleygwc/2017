@@ -34,16 +34,21 @@ def login():
 # Sign up page. Until we have a login page, go to the home page instead.
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    error = ""
     if request.method == 'POST':
         print(request.form['username'])
         username=request.form['username']
         password=request.form['password']
         password2=request.form['password2']
         if password==password2:
-            db.adduser(username, password)
+            if db.userexists(username):
+                error="Username already in use"
+            else:
+                db.adduser(username, password)
         else:
-            print("The passwords do not match")
-    return render_template("sign_up.html")
+            error="The passwords do not match"
+
+    return render_template("sign_up.html", error=error)
 
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():

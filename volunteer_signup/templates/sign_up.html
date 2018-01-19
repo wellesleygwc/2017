@@ -13,6 +13,7 @@
 <fieldset>
     <legend><h3>Create an Account</h3></legend>
 <p>Fill out personal information in order to create a volunteer account</p>
+    <h2><font color="red">{{error}}</font></h2>
 <form method="post">
 Enter Username: <input type="text" placeholder="Username" name="username" value="{{request.form.username}} "><br>
 Enter Password: <input type="password" placeholder="Password" name="password"> <!--value="{{request.form.password}} "--><br>
