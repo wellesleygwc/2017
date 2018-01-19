@@ -45,6 +45,11 @@ def profile():
 def about():
     return render_template('about.html')
 
+# Events page
+@app.route('/events')
+def events():
+    return render_template('Events.html')
+
 # Start the application
 if __name__== "__main__":
     db.create_db()
