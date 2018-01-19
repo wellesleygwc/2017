@@ -20,7 +20,14 @@ def home():
 def login():
     if request.method == 'POST':
         print(request.form['Username'])
-    return render_template("login.html")
+        print(request.form['Password'])
+        username = request.form['Username']
+        password = request.form['Password']
+        correctpassword = db.checkuser(username, password)
+        if password == correctpassword:
+            return redirect(url_for('events'))
+        else:
+            return render_template("login.html", error="Wrong Password")
 
 # Sign up page. Until we have a login page, go to the home page instead.
 @app.route('/signup', methods=['GET', 'POST'])
