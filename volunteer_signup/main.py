@@ -20,6 +20,15 @@ def home():
 def login():
     if request.method == 'POST':
         print(request.form['Username'])
+        print(request.form['Password'])
+        username = request.form['Username']
+        password = request.form['Password']
+        correctpassword = db.checkuser(username, password)
+        if password == correctpassword:
+            print "matches"
+        else:
+            return render_template("login.html", error="Wrong Password")
+
     return render_template("login.html")
 
 # Sign up page. Until we have a login page, go to the home page instead.
