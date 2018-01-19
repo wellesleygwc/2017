@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% include 'menu.html' %}
+    <br><br>
     <title>Create an Account</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/menustyle.css" type="text/css">
@@ -9,12 +11,12 @@
 
 <body>
 <fieldset>
-    <legend>Create an Account</legend>
-<p>[Insert text here about needing to fill out personal information in order to create a volunteer account]</p>
+    <legend><h3>Create an Account</h3></legend>
+<p>Fill out personal information in order to create a volunteer account</p>
 <form method="post">
 Enter Username: <input type="text" placeholder="Username" name="username" value="{{request.form.username}} "><br>
-Enter Password: <input type="text" placeholder="Password" name="password"> <!--value="{{request.form.password}} "--><br>
-Repeat Password: <input type="text" placeholder="Repeat Password" name="password2"><br>
+Enter Password: <input type="password" placeholder="Password" name="password"> <!--value="{{request.form.password}} "--><br>
+Repeat Password: <input type="password" placeholder="Repeat Password" name="password2"><br>
 <input type="submit">
 </form>
 </fieldset>

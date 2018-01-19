@@ -32,7 +32,8 @@ def signup():
         password2=request.form['password2']
         if password==password2:
             db.adduser(username, password)
-            print("password don't match")
+        else:
+            print("The passwords do not match")
     return render_template("sign_up.html")
 
 @app.route('/Profile', methods=['GET', 'POST'])
