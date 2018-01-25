@@ -94,8 +94,6 @@ def checkuser(username, password):
     cursor = connection.cursor()
     cursor.execute("select password from users where username = '%s'" % username)
     row = cursor.fetchone()
-    #return row[0]
-    print "password = " + str(row[0])
 
     connection.close()
 
