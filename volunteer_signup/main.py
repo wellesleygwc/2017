@@ -29,6 +29,8 @@ def login():
         else:
             return render_template("login.html", error="Wrong Password")
 
+    return render_template("login.html")
+
 # Sign up page. Until we have a login page, go to the home page instead.
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
