@@ -23,7 +23,6 @@ def create_db():
                    ", email text not null" +
                    ", firstname text not null" +
                    ", lastname text not null)")
-
     cursor.execute("insert or ignore into users values ('admin', '1010', 'admin@example.com', 'Joe', 'Jones')")
 
 # Create and populate your database tables. Here's an example to get you started.
@@ -68,10 +67,10 @@ def read_table1(column1_value):
 
     return row[0]
 
-def adduser(username, password):
+def adduser(username, password, firstname, lastname, email, phone):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    sql = "insert or ignore into users values ('%s', '%s')" % (username, password)
+    sql = "insert or ignore into users values ('%s', '%s', '%s', '%s', '%s', '%s')" % (username, password, firstname, lastname, email, phone)
     cursor.execute(sql)
     connection.commit()
     connection.close()

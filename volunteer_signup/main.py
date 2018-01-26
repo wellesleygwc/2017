@@ -45,11 +45,17 @@ def signup():
         username=request.form['username']
         password=request.form['password']
         password2=request.form['password2']
+        firstname=request.form['firstname']
+        lastname=request.form['lastname']
+        email=request.form['email']
+        phone=request.form['phone']
+
+
         if password==password2:
             if db.userexists(username):
                 error="Username already in use"
             else:
-                db.adduser(username, password)
+                db.adduser(username, password, firstname, lastname, email, phone)
         else:
             error="The passwords do not match"
 
@@ -57,6 +63,15 @@ def signup():
 
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():
+    if request.method == 'POST':
+        print(request.form['new_email'])
+        email=request.form['new_email']
+        firstname=request.form['new_first_name']
+        lastname=request.form['new_last_name']
+        oldpassword = request.form['original_password']
+        newpassword = request.form['new_password']
+        checkpassword = request.form['confirm_password']
+        print email
     return render_template("Profile.html")
 
 
