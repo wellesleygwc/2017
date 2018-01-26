@@ -23,7 +23,6 @@ def create_db():
                    ", email text not null" +
                    ", firstname text not null" +
                    ", lastname text not null)")
-
     cursor.execute("insert or ignore into users values ('admin', '1010', 'admin@example.com', 'Joe', 'Jones')")
 
 # Create and populate your database tables. Here's an example to get you started.
