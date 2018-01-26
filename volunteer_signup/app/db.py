@@ -19,8 +19,12 @@ def create_db():
     cursor.execute("drop table if exists users")
     cursor.execute("create table if not exists users("+
                    "username text primary key not null" +
-                   ", password text not null)")
-    cursor.execute("insert or ignore into users values ('admin', '1010')")
+                   ", password text not null" +
+                   ", email text not null" +
+                   ", firstname text not null" +
+                   ", lastname text not null)")
+
+    cursor.execute("insert or ignore into users values ('admin', '1010', 'admin@example.com', 'Joe', 'Jones')")
 
 # Create and populate your database tables. Here's an example to get you started.
     cursor.execute("drop table if exists volunteerhoursummary")
