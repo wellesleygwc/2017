@@ -67,12 +67,10 @@ def read_table1(column1_value):
 
     return row[0]
 
-def adduser(username, password):
+def adduser(username, password, firstname, lastname, email, phone):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("insert or ignore into users values ('value1', 'value2')")
-    sql = "insert or ignore into users values ('%s', '%s')" % (username, password)
-    print(sql)
+    sql = "insert or ignore into users values ('%s', '%s', '%s', '%s', '%s', '%s')" % (username, password, firstname, lastname, email, phone)
     cursor.execute(sql)
     connection.commit()
     connection.close()

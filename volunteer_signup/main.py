@@ -7,13 +7,18 @@ from app import db
 
 app = Flask(__name__)
 
-HOME_PAGE = 'about.html'
+HOME_PAGE = 'index.html'
 
 # Home page
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template(HOME_PAGE)
+
+# Home page
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])
@@ -40,11 +45,17 @@ def signup():
         username=request.form['username']
         password=request.form['password']
         password2=request.form['password2']
+        firstname=request.form['firstname']
+        lastname=request.form['lastname']
+        email=request.form['email']
+        phone=request.form['phone']
+
+
         if password==password2:
             if db.userexists(username):
                 error="Username already in use"
             else:
-                db.adduser(username, password)
+                db.adduser(username, password, firstname, lastname, email, phone)
         else:
             error="The passwords do not match"
 
@@ -63,10 +74,6 @@ def profile():
         print email
     return render_template("Profile.html")
 
-# About page
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 # Events page
 @app.route('/events')
