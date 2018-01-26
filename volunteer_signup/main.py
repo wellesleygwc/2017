@@ -40,11 +40,17 @@ def signup():
         username=request.form['username']
         password=request.form['password']
         password2=request.form['password2']
+        firstname=request.form['firstname']
+        lastname=request.form['lastname']
+        email=request.form['email']
+        phone=request.form['phone']
+
+
         if password==password2:
             if db.userexists(username):
                 error="Username already in use"
             else:
-                db.adduser(username, password)
+                db.adduser(username, password, firstname, lastname, email, phone)
         else:
             error="The passwords do not match"
 
