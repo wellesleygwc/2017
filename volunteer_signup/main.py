@@ -7,7 +7,7 @@ from app import db
 
 app = Flask(__name__)
 
-HOME_PAGE = 'about.html'
+HOME_PAGE = 'index.html'
 
 # Home page
 @app.route('/')
@@ -15,34 +15,55 @@ HOME_PAGE = 'about.html'
 def home():
     return render_template(HOME_PAGE)
 
+# Home page
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         print(request.form['Username'])
+        print(request.form['Password'])
+        username = request.form['Username']
+        password = request.form['Password']
+        correctpassword = db.checkuser(username, password)
+        if password == correctpassword:
+            return redirect(url_for('events'))
+        else:
+            return render_template("login.html", error="Wrong Password")
+
     return render_template("login.html")
 
 # Sign up page. Until we have a login page, go to the home page instead.
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    error = ""
     if request.method == 'POST':
         print(request.form['username'])
         username=request.form['username']
         password=request.form['password']
         password2=request.form['password2']
         if password==password2:
-            db.adduser(username, password)
-            print("password don't match")
-    return render_template("sign_up.html")
+            if db.userexists(username):
+                error="Username already in use"
+            else:
+                db.adduser(username, password)
+        else:
+            error="The passwords do not match"
+
+    return render_template("sign_up.html", error=error)
 
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():
     return render_template("Profile.html")
 
-# About page
-@app.route('/about')
-def about():
-    return render_template('about.html')
+
+# Events page
+@app.route('/events')
+def events():
+    return render_template('Events.html')
 
 # Start the application
 if __name__== "__main__":
