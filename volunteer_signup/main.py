@@ -52,6 +52,15 @@ def signup():
 
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():
+    if request.method == 'POST':
+        print(request.form['new_email'])
+        email=request.form['new_email']
+        firstname=request.form['new_first_name']
+        lastname=request.form['new_last_name']
+        oldpassword = request.form['original_password']
+        newpassword = request.form['new_password']
+        checkpassword = request.form['confirm_password']
+        print email
     return render_template("Profile.html")
 
 # About page
