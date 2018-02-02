@@ -19,8 +19,11 @@ def create_db():
     cursor.execute("drop table if exists users")
     cursor.execute("create table if not exists users("+
                    "username text primary key not null" +
-                   ", password text not null)")
-    cursor.execute("insert or ignore into users values ('admin', '1010')")
+                   ", password text not null" +
+                   ", email text not null" +
+                   ", firstname text not null" +
+                   ", lastname text not null)")
+    cursor.execute("insert or ignore into users values ('admin', '1010', 'admin@example.com', 'Joe', 'Jones')")
 
 # Create and populate your database tables. Here's an example to get you started.
     cursor.execute("drop table if exists volunteerhoursummary")
@@ -64,12 +67,10 @@ def read_table1(column1_value):
 
     return row[0]
 
-def adduser(username, password):
+def adduser(username, password, firstname, lastname, email, phone):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("insert or ignore into users values ('value1', 'value2')")
-    sql = "insert or ignore into users values ('%s', '%s')" % (username, password)
-    print(sql)
+    sql = "insert or ignore into users values ('%s', '%s', '%s', '%s', '%s', '%s')" % (username, password, firstname, lastname, email, phone)
     cursor.execute(sql)
     connection.commit()
     connection.close()
@@ -107,3 +108,22 @@ def update_table1(column1_value, column2_new_value):
     cursor.execute("UPDATE table1 SET colum2='%s' WHERE column1='%s'" % (column2_new_value, column1_value))
 
     connection.close()
+
+def change_password(username, old_password, new_password):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Try to retrieve a record from the users table that matches the username and password
+    cursor.execute("select * from users where username='%s' and password='%s'" % (username, old_password))
+    rows = cursor.fetchall()
+
+
+    print (' username:%s, old_password:%s, new_password:%s' % (username, old_password, new_password))
+    if len(rows) == 0:
+        return "bad password"
+    sql = "update users SET  password='%s' WHERE username='%s'" % (new_password, username)
+    print (sql)
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
+    return "password changed"
