@@ -115,3 +115,22 @@ def update_table1(column1_value, column2_new_value):
     cursor.execute("UPDATE table1 SET colum2='%s' WHERE column1='%s'" % (column2_new_value, column1_value))
 
     connection.close()
+
+def change_password(username, old_password, new_password):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Try to retrieve a record from the users table that matches the username and password
+    cursor.execute("select * from users where username='%s' and password='%s'" % (username, old_password))
+    rows = cursor.fetchall()
+
+
+    print (' username:%s, old_password:%s, new_password:%s' % (username, old_password, new_password))
+    if len(rows) == 0:
+        return "bad password"
+    sql = "update users SET  password='%s' WHERE username='%s'" % (new_password, username)
+    print (sql)
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
+    return "password changed"
