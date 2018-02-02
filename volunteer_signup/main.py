@@ -71,7 +71,6 @@ def profile():
         oldpassword = request.form['original_password']
         newpassword = request.form['new_password']
         checkpassword = request.form['confirm_password']
-        print email
     return render_template("Profile.html")
 
 
