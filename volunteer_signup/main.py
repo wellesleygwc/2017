@@ -28,11 +28,12 @@ def login():
         print(request.form['Password'])
         username = request.form['Username']
         password = request.form['Password']
-        correctpassword = db.checkuser(username, password)
-        if password == correctpassword:
+        error = db.checkuser(username, password)
+        if error == "Congratulations":
             return redirect(url_for('events'))
         else:
-            return render_template("login.html", error="Wrong Password")
+            return render_template("login.html", error=error)
+
 
     return render_template("login.html")
 
@@ -71,7 +72,7 @@ def profile():
         oldpassword = request.form['original_password']
         newpassword = request.form['new_password']
         checkpassword = request.form['confirm_password']
-        print email
+        print(email)
     return render_template("Profile.html")
 
 

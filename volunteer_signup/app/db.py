@@ -20,10 +20,11 @@ def create_db():
     cursor.execute("create table if not exists users("+
                    "username text primary key not null" +
                    ", password text not null" +
-                   ", email text not null" +
                    ", firstname text not null" +
-                   ", lastname text not null)")
-    cursor.execute("insert or ignore into users values ('admin', '1010', 'admin@example.com', 'Joe', 'Jones')")
+                   ", lastname text not null" +
+                   ", email text not null" +
+                   ", phone text not null)")
+    cursor.execute("insert or ignore into users values ('admin', '1010', 'Joe', 'Jones', 'admin@example.com', '1234567890')")
 
 # Create and populate your database tables. Here's an example to get you started.
     cursor.execute("drop table if exists volunteerhoursummary")
@@ -95,10 +96,16 @@ def checkuser(username, password):
     cursor = connection.cursor()
     cursor.execute("select password from users where username = '%s'" % username)
     row = cursor.fetchone()
+    if not row:
+        return ("There is not a user with that name")
+    if str(row[0]) == password:
+        return ("Congratulations")
+    else:
+        return("Incorrect password")
 
     connection.close()
-
-    return str(row[0])
+    print(row)
+    return (str(row[0]), ())
 
 def update_table1(column1_value, column2_new_value):
     connection = sqlite3.connect(database_file)
