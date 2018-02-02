@@ -21,15 +21,16 @@
 
 <br><br>
 
-    <form action="change password" method="post">
+    <form action="Profile" method="post">
         <h4> Old Password </h4>
-    <input type="password" name="original_password" placeholder="Original password" value=""><br>
+    <input type="password" name="old_password" placeholder="Original password" value=""><br>
         <h4> New Password </h4>
     <input type="password" name="new_password" placeholder="New password" value=""><br>
         <h4> Confirm New Password </h4>
     <input type="password" name="confirm_password" placeholder="Confirm password" value=""><br> <br>
       <input type="submit" name="Change Password">
 </form>
+      <h2><font color="red">{{error_message}}</font></h2>
 
         <br>
         <br>
