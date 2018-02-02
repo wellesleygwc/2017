@@ -68,3 +68,8 @@ def events():
 if __name__== "__main__":
     db.create_db()
     app.run(debug=True)
+
+# menu
+@app.route('/menu')
+def events():
+    return render_template('menu.html')

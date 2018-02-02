@@ -77,17 +77,17 @@ div.panel {
 body {
   margin: 0;
   font-family: Arial;
-  background-color: #79BFFC;
+  background-color: #bbf6ff;
 }
 
 .secondnav {
 overflow: hidden;
-background-color: #004aa7;
+background-color: #ece9c6;
 }
 
 .topnav {
   overflow: hidden;
-  background-color: #dcbd43;
+  background-color: #ffffff;
 }
 
 .topnav a {
@@ -106,7 +106,7 @@ background-color: #004aa7;
 }
 
 .secondnav a.active {
-  background-color: #4e78dc;
+  background-color: #dcd25b;
   color: white;
 }
 
