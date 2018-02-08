@@ -28,12 +28,16 @@ def login():
         print(request.form['Password'])
         username = request.form['Username']
         password = request.form['Password']
-        correctpassword = db.checkuser(username, password)
-        if password == correctpassword:
+
+        error = db.checkuser(username, password)
+        if error == "Congratulations":
+
             session['username'] = username
+
             return redirect(url_for('events'))
         else:
-            return render_template("login.html", error="Wrong Password")
+            return render_template("login.html", error=error)
+
 
     return render_template("login.html")
 
@@ -90,6 +94,7 @@ def events():
 # Start the application
 if __name__== "__main__":
     db.create_db()
+    app.secret_key = os.urandom(24)
     app.run(debug=True)
 
 # menu
