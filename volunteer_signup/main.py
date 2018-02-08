@@ -99,5 +99,5 @@ if __name__== "__main__":
 
 # menu
 @app.route('/menu')
-def events():
+def menu():
     return render_template('menu.html')
