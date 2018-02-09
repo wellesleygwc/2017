@@ -134,3 +134,17 @@ def change_password(username, old_password, new_password):
     connection.commit()
     connection.close()
     return "password changed"
+
+def list_events():
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Retrieve all the events
+    cursor.execute("SELECT * FROM events")
+    rows = cursor.fetchall()
+
+    print (rows)
+
+    connection.close()
+
+    return rows
