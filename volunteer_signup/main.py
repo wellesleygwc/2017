@@ -36,7 +36,7 @@ def login():
 
             return redirect(url_for('events'))
         else:
-            return render_template("login.html", error=error)
+            return render_template("login.html", error=error, loggedin='username' in session)
 
 
     return render_template("login.html")
