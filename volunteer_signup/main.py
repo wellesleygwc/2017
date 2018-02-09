@@ -36,7 +36,7 @@ def login():
 
             return redirect(url_for('events'))
         else:
-            return render_template("login.html", error=error)
+            return render_template("login.html", error=error, loggedin='username' in session)
 
 
     return render_template("login.html")
@@ -89,7 +89,7 @@ def profile():
 # Events page
 @app.route('/events')
 def events():
-    return render_template('Events.html')
+    return render_template('Events.html', events=db.list_events())
 
 # Start the application
 if __name__== "__main__":
