@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # Imports
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, flash, render_template, redirect, url_for, request, session
 import os, sys
 from app import db
 
@@ -24,6 +24,7 @@ def about():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+
         print(request.form['Username'])
         print(request.form['Password'])
         username = request.form['Username']
@@ -37,7 +38,6 @@ def login():
             return redirect(url_for('events'))
         else:
             return render_template("login.html", error=error, loggedin='username' in session)
-
 
     return render_template("login.html")
 
@@ -61,6 +61,8 @@ def signup():
                 error="Username already in use"
             else:
                 db.adduser(username, password, firstname, lastname, email, phone)
+                flash('You have successfully created an account!')
+                return render_template("login.html")
         else:
             error="The passwords do not match"
 
