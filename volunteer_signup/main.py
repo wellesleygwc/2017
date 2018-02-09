@@ -91,6 +91,11 @@ def profile():
 def events():
     return render_template('Events.html', events=db.list_events())
 
+# menu
+@app.route('/addevent')
+def addevent():
+    return render_template('AddEvent.html')
+
 # Start the application
 if __name__== "__main__":
     db.create_db()
@@ -101,3 +106,4 @@ if __name__== "__main__":
 @app.route('/menu')
 def menu():
     return render_template('menu.html')
+
