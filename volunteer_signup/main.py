@@ -111,9 +111,13 @@ def events():
     return render_template('Events.html', events=db.list_events())
 
 # menu
-@app.route('/addevent')
+@app.route('/addevent', methods=['GET','POST'])
 def addevent():
-    return render_template('AddEvent.html')
+    if request.method == "GET":
+        return render_template('AddEvent.html')
+    if request.method == "POST":
+        flash('You have successfully created an event!')
+        return redirect(url_for('events'))
 
 # Start the application
 if __name__== "__main__":
