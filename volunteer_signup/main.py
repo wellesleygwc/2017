@@ -20,6 +20,17 @@ def home():
 def about():
     return render_template('about.html')
 
+# Help page
+@app.route('/help', methods=['GET', 'POST'])
+def help():
+    return render_template('Help.html')
+
+
+#contact page
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    return render_template('Contacts.html')
+
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -68,6 +79,7 @@ def signup():
 
     return render_template("sign_up.html", error=error)
 
+
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():
     if not 'username' in session:
@@ -87,6 +99,11 @@ def profile():
 
     return render_template('login.html', error_message=status)
 
+#Log out when hit log out button
+@app.route('/logout')
+def logout():
+    del session['username']
+    return redirect(url_for('home'))
 
 # Events page
 @app.route('/events')
