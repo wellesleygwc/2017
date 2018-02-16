@@ -101,8 +101,8 @@ background-color: #ece9c6;
 }
 
 .secondnav a:hover {
-  background-color: #ffd699;
-  color: black;
+  background-color: #bbf6ff;
+  color: blue;
 }
 
 .secondnav a.active {
