@@ -79,6 +79,7 @@ def signup():
 
     return render_template("sign_up.html", error=error)
 
+
 @app.route('/Profile', methods=['GET', 'POST'])
 def profile():
     if not 'username' in session:
@@ -98,6 +99,11 @@ def profile():
 
     return render_template('login.html', error_message=status)
 
+#Log out when hit log out button
+@app.route('/logout')
+def logout():
+    del session['username']
+    return redirect(url_for('home'))
 
 # Events page
 @app.route('/events')
