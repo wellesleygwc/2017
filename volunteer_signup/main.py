@@ -20,6 +20,17 @@ def home():
 def about():
     return render_template('about.html')
 
+# Help page
+@app.route('/help', methods=['GET', 'POST'])
+def help():
+    return render_template('Help.html')
+
+
+#contact page
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    return render_template('Contacts.html')
+
 # Login page. Until we have a login page, go to the home page instead.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
