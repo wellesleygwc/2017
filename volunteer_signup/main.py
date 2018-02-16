@@ -16,6 +16,11 @@ def home():
     return render_template(HOME_PAGE)
 
 # Home page
+@app.route('/volunteer')
+def volunteer():
+    return render_template('volunteer.html')
+
+# Home page
 @app.route('/about')
 def about():
     return render_template('about.html')
