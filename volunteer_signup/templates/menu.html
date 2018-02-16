@@ -31,9 +31,9 @@
             </td>
         </tr>
     </table>
-<div class="secondnav">
+<div id="secondnav" class="secondnav">
       {% if session.username %}
-    <a class="active" href="home">Home</a>
+    <a href="home">Home</a>
     <a href="Profile"> Profile </a>
     <a href="login">Login</a>
     <a href="help">Help</a>
@@ -50,6 +50,16 @@
       {% endif %}
 
 </div>
+
+<script>
+    var secondnav = document.getElementById('secondnav');
+    var tags = secondnav.getElementsByTagName('a');
+    for (var tag in tags) {
+        console.log("tag = " + tag);
+    }
+    // class="active"
+</script>
+
 <div style="padding-left:16px">
 </div>
 </div>
