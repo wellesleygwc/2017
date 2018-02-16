@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event</title>
+    <!--<link href="www.volunteersignup.org/css/bootstrap.min.css" rel="stylesheet">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/menustyle.css" type="text/css">
+<style>
+
+
+  </style>
+
+</head>
+<body onscroll="myFunction()">
+  {% include 'menu.html' %}
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+
+
+<div style="padding-left:16px">
+</div>
+</div>
+<script>
+var secondnav = document.getElementbyId("secondnav");
+var sticky = secondnav.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    secondnav.classList.add("sticky")
+  } else {
+    secondnav.classList.remove("sticky");
+  }
+}
+</script>
+
+<center>
+    <form style="align: center;" action="addevent" method="POST">
+        <center><h1 style="font-family:palatino;">Add Event</h1></center>
+
+        <p class="break" />
+
+          <label style="font-family:palatino;"
+                 for="Event Title">Title: </label>
+        <input type="" name="Title" value="" id="Title" placeholder="Enter the event title"/>
+        </div>
+
+        <p class="break">
+
+        <div>
+          <label style="font-family:palatino;"
+                 for="Description">Description: </label>
+            <input type="Description" name="Description" value="" id="Description" placeholder="Enter your Event Description"/>
+        </div>
+<p class="break">
+     <div>
+          <label style="font-family:palatino;"
+                 for="Number Of Volunteers">Number Of Volunteers: </label>
+            <input type="Number Of Volunteers" name="Number Of Volunteers" value="" id="Number Of Volunteers" placeholder="Enter your Number Of Volunteers"/>
+        </div>
+<p class="break">
+        <div>
+          <label style="font-family:palatino;"
+                 for="Date">Description: </label>
+            <input type="Date" name="Date" value="" id="Date" placeholder="Enter your Event's Date"/>
+        </div>
+<p class="break">
+        <div>
+          <label style="font-family:palatino;"
+                 for="Time">Time: </label>
+            <input type="Time" name="Time" value="" id="Time" placeholder="Enter your Event's Time"/>
+        </div>
+<p class="break">
+        <div>
+          <center><label style="font-family:palatino;">
+              <button class="submit">Submit</button>
+              <!--<input type="submit" value="Submit" id="Submit"></input></label></center>-->
+        </div>
+
+        <p> {{error}} </p>
+
+
+    </form>
+
+
+</center>
+
+
+</body>
+</html>

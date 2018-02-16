@@ -5,6 +5,10 @@
     <title>Events</title>
 </head>
 <body>
+  {% include 'menu.html' %}
+  </td>
+   </td>
+
 <table style="border-collapse: collapse;" width="100%" border="0">
     <thead align="left">
     <tr bgcolor="#33B8FF">
@@ -13,6 +17,16 @@
         <th>Sign Up</th>
     </tr>
     </thead>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
 
     {% for event in events %}
 
@@ -24,6 +38,7 @@
 
     {% endfor %}
 
+    <tr><td><a href="addevent">Add Event</a></td></tr>
 </table>
 </body>
 </html>

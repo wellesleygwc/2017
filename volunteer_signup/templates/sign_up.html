@@ -16,11 +16,25 @@
     <h2><font color="red">{{error}}</font></h2>
     <form method="post">
         Enter Username:
-        <input type="text" placeholder="X" name="username"
-               value="{{request.form.username}} "><br>
+        <input type="text" placeholder="Username" name="username"
+               value="{{request.form.username}}"><br>
         Enter Password:
         <input type="password" placeholder="Password" name="password"><br>
         Repeat Password: <input type="password" placeholder="Repeat Password" name="password2"><br>
+        <script>
+        function myFunction() {
+
+        x = document.getElementById("password").value;
+            text = "n"
+            if (x.length < 10) {
+                text = "Your password is too short: please add more digits";
+            }
+
+            document.getElementById("demo").innerHTML = text;
+
+            }
+
+        </script>
         Personal Information: <input type="text" placeholder="First Name" name="firstname">
         <input type="text" placeholder="Last Name" name="lastname"> <br>
         <input type="text" placeholder="Email" name="email"><br>
