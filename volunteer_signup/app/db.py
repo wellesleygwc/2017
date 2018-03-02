@@ -148,3 +148,14 @@ def list_events():
     connection.close()
 
     return rows
+
+
+
+def add_event (event) :
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    sql = "insert or ignore into users values ('%s', '%s', '%s', '%s', '%s')" % (
+    Title, Description, NumberOfVolunteers, Date, Time)
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
