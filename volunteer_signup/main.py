@@ -89,16 +89,16 @@ def signup():
 def profile():
     if not 'username' in session:
         print ("no session")
-        return render_template('Profile.html')
+        return render_template('login.html')
     if request.method == 'GET':
-        return render_template('Profile.html')
+        return render_template('EditProfile.html')
     old_password = request.form['old_password']
     new_password=request.form['new_password']
     confirm_password=request.form['confirm_password']
     username = session['username']
     print (' username:%s, new_password:%s, confirm_password:%s' % (username, new_password, confirm_password))
     if new_password!=confirm_password:
-        return render_template('Profile.html', error_message="passwords don't match")
+        return render_template('EditProfile.html', error_message="passwords don't match")
     username=session['username']
     status = db.change_password(username, old_password, new_password)
 
