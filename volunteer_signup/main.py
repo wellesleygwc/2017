@@ -115,7 +115,7 @@ def logout():
 def events():
     return render_template('Events.html', events=db.list_events())
 
-# menu
+# add event
 @app.route('/addevent', methods=['GET','POST'])
 def addevent():
     if request.method == "GET":
@@ -126,13 +126,16 @@ def addevent():
         print(request.form['NumberOfVolunteers'])
         print(request.form['Date'])
         print(request.form['Time'])
+
         Title = request.form['Title']
         Description= request.form['Description']
         NumberOfVolunteers= request.form['NumberOfVolunteers']
         Date = request.form['Date']
         Time = request.form['Time']
         flash('You have successfully created an event!')
+        db.add_event(Description, Date, 11045)
         return redirect(url_for('events'))
+
 
 # Start the application
 if __name__== "__main__":
