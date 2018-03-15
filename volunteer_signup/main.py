@@ -16,6 +16,11 @@ def home():
     return render_template(HOME_PAGE)
 
 # Home page
+@app.route('/volunteer')
+def volunteer():
+    return render_template('volunteer.html')
+
+# Home page
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -116,10 +121,18 @@ def addevent():
     if request.method == "GET":
         return render_template('AddEvent.html')
     if request.method == "POST":
+        print(request.form['Title'])
+        print(request.form['Description'])
+        print(request.form['NumberOfVolunteers'])
+        print(request.form['Date'])
+        print(request.form['Time'])
+        Title = request.form['Title']
+        Description= request.form['Description']
+        NumberOfVolunteers= request.form['NumberOfVolunteers']
+        Date = request.form['Date']
+        Time = request.form['Time']
         flash('You have successfully created an event!')
         return redirect(url_for('events'))
-
-
 
 # Start the application
 if __name__== "__main__":

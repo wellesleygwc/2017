@@ -51,7 +51,7 @@ function myFunction() {
 
           <label style="font-family:palatino;"
                  for="Event Title">Title: </label>
-        <input type="" name="Title" value="" id="Title" placeholder="Enter the event title"/>
+        <input type="Title" name="Title" value="{{request.form.title}}" id="Title" placeholder="Enter the event title"/>
         </div>
 
         <p class="break">
@@ -59,25 +59,25 @@ function myFunction() {
         <div>
           <label style="font-family:palatino;"
                  for="Description">Description: </label>
-            <input type="Description" name="Description" value="" id="Description" placeholder="Enter your Event Description"/>
+            <input type="Description" name="Description" value="{{request.form.description}}" id="Description" placeholder="Enter your Event Description"/>
         </div>
 <p class="break">
      <div>
           <label style="font-family:palatino;"
                  for="Number Of Volunteers">Number Of Volunteers: </label>
-            <input type="Number Of Volunteers" name="Number Of Volunteers" value="" id="Number Of Volunteers" placeholder="Enter your Number Of Volunteers"/>
+            <input type="number" name="NumberOfVolunteers" value="{{request.form.numberofvolunteers}}" id="NumberOfVolunteers" placeholder="Enter your Number Of Volunteers"/>
         </div>
 <p class="break">
         <div>
           <label style="font-family:palatino;"
-                 for="Date">Description: </label>
-            <input type="Date" name="Date" value="" id="Date" placeholder="Enter your Event's Date"/>
+                 for="Date">Date: </label>
+            <input type="Date" name="Date" value="{{request.form.date}}" id="Date" placeholder="Enter your Event's Date"/>
         </div>
 <p class="break">
         <div>
           <label style="font-family:palatino;"
                  for="Time">Time: </label>
-            <input type="Time" name="Time" value="" id="Time" placeholder="Enter your Event's Time"/>
+            <input type="Time" name="Time" value="{{request.form.time}}" id="Time" placeholder="Enter your Event's Time"/>
         </div>
 <p class="break">
         <div>

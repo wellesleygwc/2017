@@ -18,7 +18,7 @@
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
                 </span>
                 <img src="static\Sketch (4).png" width="60px">
-                <strong style="font-size:20px">Volunteer Sign Up
+                <strong style="font-size:20px">Golden Narwhal Volunteers
                 </strong>
             </td>
             <td width="500">
@@ -31,11 +31,10 @@
             </td>
         </tr>
     </table>
-<div class="secondnav">
+<div id="secondnav" class="secondnav">
       {% if session.username %}
-    <a class="active" href="home">Home</a>
+    <a href="home">Home</a>
     <a href="Profile"> Profile </a>
-    <a href="login">Login</a>
     <a href="help">Help</a>
     <a href="about">About</a>
     <a href="contact">Contact</a>
@@ -50,6 +49,16 @@
       {% endif %}
 
 </div>
+
+<script>
+    var secondnav = document.getElementById('secondnav');
+    var tags = secondnav.getElementsByTagName('a');
+    for (var tag in tags) {
+        console.log("tag = " + tag);
+    }
+    // class="active"
+</script>
+
 <div style="padding-left:16px">
 </div>
 </div>
