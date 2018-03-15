@@ -119,10 +119,7 @@ def addevent():
         flash('You have successfully created an event!')
         return redirect(url_for('events'))
 
-# Events page
-@app.route('/events')
-def events():
-    return render_template('Events.html')
+
 
 # Start the application
 if __name__== "__main__":
