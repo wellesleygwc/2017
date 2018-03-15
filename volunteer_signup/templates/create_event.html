@@ -6,10 +6,59 @@
 </head>
 <body>
 <form>
+<div class="topnav">
 
+    <table>
+        <tr>
+            <td width="300px">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="Profile.html"> Profile </a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#help">Help</a>
+                </div>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
+                </span>
+                <img src="static\Sketch (4).png" width="60px">
+                <strong style="font-size:20px">Volunteer Sign Up
+                </strong>
+            </td>
+            <td width="500">
+            </td>
+            <td width="300px" align="right">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p><strong>Be a friend and a Narwhal</strong></p>
+            </td>
+            <td width="300px" align="right">
+            </td>
+        </tr>
+    </table>
+<div class="secondnav">
+      {% if session.username %}
+    <a class="active" href="home">Home</a>
+    <a href="Profile"> Profile </a>
+    <a href="login">Login</a>
+    <a href="help">Help</a>
+    <a href="about">About</a>
+    <a href="contact">Contact</a>
+    <a href="events">Events</a>
+    <a href="logout">Log Out</a>
+  {% else %}
+    <a class="active" href="home">Home</a>
+    <a href="login">Login</a>
+    <a href="help">Help</a>
+    <a href="about">About</a>
+    <a href="contact">Contact</a>
+      {% endif %}
+
+</div>
+<div style="padding-left:16px">
+</div>
+</div>
 
    <div>
-        <center><h1 style="font-family:palatino;">Login</h1></center></div>
+        <center><h1 style="font-family:palatino;">Create an Event</h1></center></div>
 
         <p class="break" />
 
@@ -41,31 +90,6 @@
             <p>
                 <br> <br> Thanks for creating an event!</p> </center> </div>
 
-
-
-
-
-
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
