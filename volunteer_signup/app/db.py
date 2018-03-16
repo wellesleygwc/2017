@@ -40,13 +40,14 @@ def create_db():
 
     cursor.execute("drop table if exists events")
     cursor.execute("create table if not exists events("+
-                   "description text not null" +
+                   "title text not null" +
+                   ", description text not null" +
                    ", date text not null"+
                    ", id integer primary key"+
                    ", credits int not null default 1)")
-    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2)")
+    cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2)")
 
-    cursor.execute("insert or ignore into events values ('Give presentation', '11/9/2017', null, 3)")
+    cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3)")
 
 
     # Save (commit) the changes
@@ -152,11 +153,9 @@ def list_events():
 
 
 
-def add_event (event) :
+def add_event (Title, description, date, credits) :
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    sql = "insert or ignore into users values ('%s', '%s', '%s', '%s', '%s')" % (
-    Title, Description, NumberOfVolunteers, Date, Time)
-    cursor.execute(sql)
+    cursor.execute("insert or ignore into events values ('%s', '%s', '%s', %d)" % (Title, description, date, credits) )
     connection.commit()
     connection.close()
