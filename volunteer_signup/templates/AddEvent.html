@@ -57,9 +57,11 @@ function myFunction() {
         <p class="break">
 
         <div>
-          <label style="font-family:palatino;"
+          <label style="font-family:palatino;
+vertical-align: top;"
                  for="Description">Description: </label>
-            <input type="Description" name="Description" value="{{request.form.description}}" id="Description" placeholder="Enter your Event Description"/>
+            <!--<input type="Description" name="Description" value="{{request.form.description}}" id="Description" placeholder="Enter your Event Description"/> -->
+        <textarea rows="10" cols="58" name="Description" value="{{request.form.description}}" id="Description" placeholder="Enter your Event Description"></textarea>
         </div>
 <p class="break">
      <div>

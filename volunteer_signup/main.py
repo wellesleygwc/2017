@@ -133,7 +133,7 @@ def addevent():
         Date = request.form['Date']
         Time = request.form['Time']
         flash('You have successfully created an event!')
-        db.add_event(Description, Date, 11045)
+        db.add_event(Title, Description, Date, 11045)
         return redirect(url_for('events'))
 
 
