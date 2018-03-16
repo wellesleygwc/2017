@@ -40,12 +40,13 @@ def create_db():
 
     cursor.execute("drop table if exists events")
     cursor.execute("create table if not exists events("+
-                   "description text primary key not null" +
-                   ", date text not null" +
-                   ", credits int not null default 0)")
-    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the club on a CS topic', '11/2/2017', 2)")
+                   "description text not null" +
+                   ", date text not null"+
+                   ", id integer primary key"+
+                   ", credits int not null default 1)")
+    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2)")
 
-    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the Club on a CS topic', '11/9/2017', 3)")
+    cursor.execute("insert or ignore into events values ('Give presentation', '11/9/2017', null, 3)")
 
 
     # Save (commit) the changes

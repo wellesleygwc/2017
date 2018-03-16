@@ -111,7 +111,7 @@ def logout():
     return redirect(url_for('home'))
 
 # Events page
-@app.route('/events')
+@app.route('/events', methods=['GET','POST'])
 def events():
     return render_template('Events.html', events=db.list_events())
 
