@@ -43,7 +43,7 @@ def create_db():
                    "title text not null" +
                    ", description text not null" +
                    ", date text not null"+
-                   ", id integer primary key"+
+                   ", id integer primary key autoincrement"+
                    ", credits int not null default 1)")
     cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2)")
 
@@ -156,6 +156,6 @@ def list_events():
 def add_event (Title, description, date, credits) :
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("insert or ignore into events values ('%s', '%s', '%s', %d)" % (Title, description, date, credits) )
+    cursor.execute("insert or ignore into events (title, description, date, credits) values ('%s', '%s', '%s', %d)" % (Title, description, date, credits) )
     connection.commit()
     connection.close()
