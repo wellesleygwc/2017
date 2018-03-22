@@ -89,9 +89,17 @@ def signup():
 def profile():
     if not 'username' in session:
         print ("no session")
-        return render_template('Profile.html')
+        return render_template('login.html')
+    return render_template('Profile.html')
+
+@app.route('/EditProfile', methods=['GET', 'POST'])
+def editprofile():
+    if not 'username' in session:
+        print ("no session")
+        return render_template('Login.html')
     if request.method == 'GET':
-        return render_template('Profile.html')
+        return render_template('EditProfile.html')
+
     old_password = request.form['old_password']
     new_password=request.form['new_password']
     confirm_password=request.form['confirm_password']
@@ -102,7 +110,7 @@ def profile():
     username=session['username']
     status = db.change_password(username, old_password, new_password)
 
-    return render_template('login.html', error_message=status)
+    return render_template('Profile.html', error_message=status)
 
 #Log out when hit log out button
 @app.route('/logout')
@@ -111,7 +119,7 @@ def logout():
     return redirect(url_for('home'))
 
 # Events page
-@app.route('/events')
+@app.route('/events', methods=['GET','POST'])
 def events():
     return render_template('Events.html', events=db.list_events())
 

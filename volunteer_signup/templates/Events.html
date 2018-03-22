@@ -13,7 +13,7 @@
     <thead align="left">
     <tr bgcolor="#33B8FF">
         <th>What And When</th>
-        <th>Open</th>
+        <th>Availibility</th>
         <th> </th>
     </tr>
     </thead>
@@ -31,9 +31,11 @@
     {% for event in events %}
 
     <tr style="border-bottom:1px solid black">
-        <td>{{event[0]}}<br>{{event[1]}}<br>{{event[2]}} Credits<br>\Awesome Ayesha.</td>
+
+        <td>{{event[1]}}<br>{{event[2]}}<br>{{event[4]}} Credits<br>\Awesome Ayesha.</td>
+
         <td>FULL</td>
-        <td><button type="button">Sign Up</button></td>
+        <td><form action="events?id={{event[2]}}" method="post"><input type="submit" value="Sign Up"></form> </td>
     </tr>
 
     {% endfor %}
