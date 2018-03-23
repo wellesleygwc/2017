@@ -109,6 +109,13 @@ def checkuser(username, password):
     print(row)
     return (str(row[0]), ())
 
+def getprofile (username):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("select username, firstname, lastname, email, phone from users where username= '%s'" % username)
+    row = cursor.fetchone()
+    return row
+
 def update_table1(column1_value, column2_new_value):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
