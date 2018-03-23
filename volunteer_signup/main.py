@@ -113,6 +113,11 @@ def editprofile():
 
     return render_template('Profile.html', error_message=status)
 
+@app.route('/deleteaccount')
+def deleteaccount ():
+    del session['username']
+    return redirect(url_for('home'))
+
 #Log out when hit log out button
 @app.route('/logout')
 def logout():
