@@ -136,6 +136,7 @@ def addevent():
     if request.method == "GET":
         return render_template('AddEvent.html')
     if request.method == "POST":
+
         print(request.form['Title'])
         print(request.form['Description'])
         print(request.form['NumberOfVolunteers'])
@@ -144,10 +145,26 @@ def addevent():
 
         Title = request.form['Title']
         Description= request.form['Description']
-        NumberOfVolunteers= int(request.form['NumberOfVolunteers'])
+        NumberOfVolunteers= 0
+        try:
+            NumberOfVolunteers = int(request.form['NumberOfVolunteers'])
+            print NumberOfVolunteers
+        except ValueError:
+            flash ('Please enter a valid number of volunteers')
+            print 'please enter a valid number of volunteers'
+            return render_template('AddEvent.html')
+
         Date = request.form['Date']
         Time = request.form['Time']
-        NumberOfCredits = int(request.form['NumberOfCredits'])
+        NumberOfCredits = 0
+        try:
+             NumberOfCredits = int(request.form['NumberOfCredits'])
+             print NumberOfCredits
+        except ValueError:
+            flash ('Please enter a valid number of credits')
+            print 'please enter a valid number of credits'
+            return render_template('AddEvent.html')
+
         print("'%d'" % NumberOfCredits)
         flash('You have successfully created an event!')
         db.add_event(Title, Description, Date, NumberOfCredits)
