@@ -99,6 +99,7 @@ def editprofile():
         print ("no session")
         return render_template('Login.html')
     if request.method == 'GET':
+        user=db.getprofile(session ['username'])
         return render_template('EditProfile.html')
 
     old_password = request.form['old_password']
@@ -110,8 +111,8 @@ def editprofile():
         return render_template('Profile.html', error_message="passwords don't match")
     username=session['username']
     status = db.change_password(username, old_password, new_password)
-
-    return render_template('Profile.html', error_message=status)
+    user=db.getprofile(session ['username'])
+    return render_template('Profile.html', error_message=status,user=user)
 
 @app.route('/deleteaccount')
 def deleteaccount ():
