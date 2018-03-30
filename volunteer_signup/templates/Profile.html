@@ -9,14 +9,13 @@
 {% include 'menu.html' %}
  <div align="center">
      <p style="font-family:palatino; font-size:50px; font-weight:bold" align="center">Profile</p>
-     <p style="font-family:palatino; font-size:30px;">Username: admin <br>
-         Forgot Password? Click <u>here</u><br>
-         First Name: Joe <br>
-         Last Name: Jones <br>
-         Email: admin@example.com <br>
-         Phone: 1234567890</p></div>
+     <p style="font-family:palatino; font-size:30px;">Username: {{user [0]}} <br>
+         First Name: {{user [1]}}<br>
+         Last Name: {{user [2]}}<br>
+         Email: {{user [3]}}<br>
+         Phone: {{user [4]}}</p>
 <a href="EditProfile"><p align="center">Update Profile</p></a>
-
+<a href="/deleteaccount">Delete Your Account</a></h3></div>
 <h3 align="center"> <font size="2">© 2017-18 Girls Who Code - Wellesley Chapter</font></h3>
 </body>
 </html>

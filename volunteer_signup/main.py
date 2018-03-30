@@ -90,8 +90,9 @@ def profile():
     if not 'username' in session:
         print ("no session")
         return render_template('login.html')
-    return render_template('Profile.html')
-
+    user=db.getprofile(session ['username'])
+    print (user)
+    return render_template('Profile.html', user=user)
 @app.route('/EditProfile', methods=['GET', 'POST'])
 def editprofile():
     if not 'username' in session:
@@ -111,6 +112,11 @@ def editprofile():
     status = db.change_password(username, old_password, new_password)
 
     return render_template('Profile.html', error_message=status)
+
+@app.route('/deleteaccount')
+def deleteaccount ():
+    del session['username']
+    return redirect(url_for('home'))
 
 #Log out when hit log out button
 @app.route('/logout')
@@ -137,11 +143,13 @@ def addevent():
 
         Title = request.form['Title']
         Description= request.form['Description']
-        NumberOfVolunteers= request.form['NumberOfVolunteers']
+        NumberOfVolunteers= int(request.form['NumberOfVolunteers'])
         Date = request.form['Date']
         Time = request.form['Time']
+        NumberOfCredits = int(request.form['NumberOfCredits'])
+        print("'%d'" % NumberOfCredits)
         flash('You have successfully created an event!')
-        db.add_event(Title, Description, Date, 11045)
+        db.add_event(Title, Description, Date, NumberOfCredits)
         return redirect(url_for('events'))
 
 
