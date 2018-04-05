@@ -99,6 +99,7 @@ def editprofile():
         print ("no session")
         return render_template('Login.html')
     if request.method == 'GET':
+        user=db.getprofile(session ['username'])
         return render_template('EditProfile.html')
 
     old_password = request.form['old_password']
@@ -110,8 +111,8 @@ def editprofile():
         return render_template('Profile.html', error_message="passwords don't match")
     username=session['username']
     status = db.change_password(username, old_password, new_password)
-
-    return render_template('Profile.html', error_message=status)
+    user=db.getprofile(session ['username'])
+    return render_template('Profile.html', error_message=status,user=user)
 
 @app.route('/deleteaccount')
 def deleteaccount ():
@@ -135,6 +136,7 @@ def addevent():
     if request.method == "GET":
         return render_template('AddEvent.html')
     if request.method == "POST":
+
         print(request.form['Title'])
         print(request.form['Description'])
         print(request.form['NumberOfVolunteers'])
@@ -143,10 +145,26 @@ def addevent():
 
         Title = request.form['Title']
         Description= request.form['Description']
-        NumberOfVolunteers= int(request.form['NumberOfVolunteers'])
+        NumberOfVolunteers= 0
+        try:
+            NumberOfVolunteers = int(request.form['NumberOfVolunteers'])
+            print NumberOfVolunteers
+        except ValueError:
+            flash ('Please enter a valid number of volunteers')
+            print 'please enter a valid number of volunteers'
+            return render_template('AddEvent.html')
+
         Date = request.form['Date']
         Time = request.form['Time']
-        NumberOfCredits = int(request.form['NumberOfCredits'])
+        NumberOfCredits = 0
+        try:
+             NumberOfCredits = int(request.form['NumberOfCredits'])
+             print NumberOfCredits
+        except ValueError:
+            flash ('Please enter a valid number of credits')
+            print 'please enter a valid number of credits'
+            return render_template('AddEvent.html')
+
         print("'%d'" % NumberOfCredits)
         flash('You have successfully created an event!')
         db.add_event(Title, Description, Date, NumberOfCredits)
