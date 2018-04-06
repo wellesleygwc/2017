@@ -148,10 +148,10 @@ def addevent():
         NumberOfVolunteers= 0
         try:
             NumberOfVolunteers = int(request.form['NumberOfVolunteers'])
-            print NumberOfVolunteers
+            print (request.form ['NumberOfVolunteers'])
         except ValueError:
             flash ('Please enter a valid number of volunteers')
-            print 'please enter a valid number of volunteers'
+            print (request.form ['please enter a valid number of volunteers'])
             return render_template('AddEvent.html')
 
         Date = request.form['Date']
@@ -159,16 +159,17 @@ def addevent():
         NumberOfCredits = 0
         try:
              NumberOfCredits = int(request.form['NumberOfCredits'])
-             print NumberOfCredits
+             print (request.form ['NumberOfCredits'])
         except ValueError:
             flash ('Please enter a valid number of credits')
-            print 'please enter a valid number of credits'
+            print (['please enter a valid number of credits'])
             return render_template('AddEvent.html')
 
         print("'%d'" % NumberOfCredits)
         flash('You have successfully created an event!')
-        db.add_event(Title, Description, Date, NumberOfCredits)
+        db.add_event(Title, Description, Date, NumberOfCredits, NumberOfVolunteers)
         return redirect(url_for('events'))
+
 
 
 # Start the application
