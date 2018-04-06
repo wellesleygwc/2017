@@ -48,6 +48,13 @@ def create_db():
                    ", creator text not null)")
     cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 'admin')")
 
+    cursor.execute("drop table if exists signups")
+    cursor.execute(
+        """create table if not exists signups(
+             event_id integer,
+             username text not null)""")
+    cursor.execute("insert or ignore into signups values (1, 'admin')")
+
     cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
 
 
@@ -152,13 +159,26 @@ def list_events():
     # Retrieve all the events
     cursor.execute("SELECT * FROM events")
     rows = cursor.fetchall()
-
-    print (rows)
-
     connection.close()
-
     return rows
 
+def volunteer(id, username):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("insert or ignore into signups (event_id, username) values ('%s', '%s')" % (id, username) )
+    connection.commit()
+    connection.close()
+
+
+def list_signups(event_id):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Retrieve all the events
+    cursor.execute("SELECT username FROM signups WHERE event_id = %d" % (event_id))
+    rows = cursor.fetchall()
+    connection.close()
+    return rows
 
 
 def add_event (Title, description, date, credits, creator) :

@@ -121,12 +121,22 @@ def logout():
     return redirect(url_for('home'))
 
 # Events page
-@app.route('/events', methods=['GET','POST'])
+@app.route('/events')
 def events():
-    if request.method == "POST":
-        db.
-
     return render_template('Events.html', events=db.list_events())
+
+@app.route('/volunteer', methods=['GET','POST'])
+def volunteer():
+    if request.method == "GET":
+        event_id = int(request.args.get('id'))
+        events = db.list_events()
+        event = events[event_id]
+        signups = db.list_signups(event_id)
+        print("event_id = %d" % event_id)
+        print("signups = %s" % signups)
+        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
+    db.volunteer(request.form['id'], session['username'])
+    return redirect(url_for('events'))
 
 # add event
 @app.route('/addevent', methods=['GET','POST'])
