@@ -142,6 +142,7 @@ def addevent():
         print(request.form['NumberOfVolunteers'])
         print(request.form['Date'])
         print(request.form['Time'])
+        print(session['username'])
 
         Title = request.form['Title']
         Description= request.form['Description']
@@ -167,7 +168,7 @@ def addevent():
 
         print("'%d'" % NumberOfCredits)
         flash('You have successfully created an event!')
-        db.add_event(Title, Description, Date, NumberOfCredits, NumberOfVolunteers)
+        db.add_event(Title, Description, Date, NumberOfCredits, NumberOfVolunteers, session['username'])
         return redirect(url_for('events'))
 
 
