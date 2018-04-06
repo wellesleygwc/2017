@@ -46,7 +46,7 @@ def create_db():
                    ", id integer primary key autoincrement"+
                    ", credits int not null default 1"+
                    ", creator text not null)")
-                       ", numvolunteers int not null default 1)")
+                    ", numvolunteers int not null default 1)")
 
     cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 'admin')")
 
