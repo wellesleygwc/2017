@@ -150,7 +150,7 @@ def list_events():
     cursor = connection.cursor()
 
     # Retrieve all the events
-    cursor.execute("SELECT * FROM events")
+    cursor.execute("SELECT * FROM events, users WHERE events.creator = users.username")
     rows = cursor.fetchall()
 
     print (rows)
