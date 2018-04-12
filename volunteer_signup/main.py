@@ -16,11 +16,6 @@ def home():
     return render_template(HOME_PAGE)
 
 # Home page
-@app.route('/volunteer')
-def volunteer():
-    return render_template('volunteer.html')
-
-# Home page
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -126,9 +121,22 @@ def logout():
     return redirect(url_for('home'))
 
 # Events page
-@app.route('/events', methods=['GET','POST'])
+@app.route('/events')
 def events():
     return render_template('Events.html', events=db.list_events())
+
+@app.route('/volunteer', methods=['GET','POST'])
+def volunteer():
+    if request.method == "GET":
+        event_id = int(request.args.get('id'))
+        events = db.list_events()
+        event = events[event_id]
+        signups = db.list_signups(event_id)
+        print("event_id = %d" % event_id)
+        print("signups = %s" % signups)
+        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
+    db.volunteer(request.form['id'], session['username'])
+    return redirect(url_for('events'))
 
 # add event
 @app.route('/addevent', methods=['GET','POST'])
@@ -149,10 +157,10 @@ def addevent():
         NumberOfVolunteers= 0
         try:
             NumberOfVolunteers = int(request.form['NumberOfVolunteers'])
-            print (NumberOfVolunteers)
+            print (request.form ['NumberOfVolunteers'])
         except ValueError:
             flash ('Please enter a valid number of volunteers')
-            print ('please enter a valid number of volunteers')
+            print (request.form ['please enter a valid number of volunteers'])
             return render_template('AddEvent.html')
 
         Date = request.form['Date']
@@ -160,16 +168,17 @@ def addevent():
         NumberOfCredits = 0
         try:
              NumberOfCredits = int(request.form['NumberOfCredits'])
-             print (NumberOfCredits)
+             print (request.form ['NumberOfCredits'])
         except ValueError:
             flash ('Please enter a valid number of credits')
-            print ('please enter a valid number of credits')
+            print (['please enter a valid number of credits'])
             return render_template('AddEvent.html')
 
         print("'%d'" % NumberOfCredits)
         flash('You have successfully created an event!')
-        db.add_event(Title, Description, Date, NumberOfCredits, session['username'])
+        db.add_event(Title, Description, Date, NumberOfCredits, NumberOfVolunteers, session['username'])
         return redirect(url_for('events'))
+
 
 
 # Start the application

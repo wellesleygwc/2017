@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event</title>
+    <!--<link href="www.volunteersignup.org/css/bootstrap.min.css" rel="stylesheet">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/menustyle.css" type="text/css">
+<style>
+
+
+  </style>
+
+</head>
+<body onscroll="myFunction()">
+  {% include 'menu.html' %}
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+ {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<div style="padding-left:16px">
+</div>
+</div>
+<script>
+var secondnav = document.getElementbyId("secondnav");
+var sticky = secondnav.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    secondnav.classList.add("sticky")
+  } else {
+    secondnav.classList.remove("sticky");
+  }
+}
+</script>
+
+Title: {{event[0]}} <br>
+Description: {{event[1]}} <br>
+Date: {{event[2]}} <br>
+Credits: {{event[4]}} <br>
+Creator: {{event[5]}} <br>
+  Signed up already:
+  <ul>
+  {% for username in signups %}
+  <li> {{username[0]}} </li>
+  {% endfor %}
+  </ul>
+
+
+<form style="align: center;" action="/volunteer" method="POST">
+    <input type="hidden" name="id" value="{{id}}">
+    <input type="submit" value="Sign Up!">
+</form>
+
+</body>
+</html>

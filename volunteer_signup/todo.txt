@@ -1,0 +1,14 @@
+* Fix "Narwhales" and spelling everywhere: Lucy
+* Fix Profile page: Data already filled in, button to change data page: Meghan & Kriti
+* Menu: Rachel
+  * Change "volunteer sign up" to "Golden Narhwal Volunteers" and fix line break
+  * Highlight the currently selected tab
+* Home: Jade Mei
+  * Take out Twitter link
+* "Add Event" from "events" page doesn't work: Sarah
+* Add links to Events page: link from event to signup for that event
+* About page
+  * Add "Help" and "About"
+  * Take out word cloud on "About" page
+* Add page to sign up for an event
+* Different types of account: volunteer and supervisor
