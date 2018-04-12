@@ -130,7 +130,7 @@ def volunteer():
     if request.method == "GET":
         event_id = int(request.args.get('id'))
         events = db.list_events()
-        event = events[event_id]
+        event = events[event_id - 1]
         signups = db.list_signups(event_id)
         print("event_id = %d" % event_id)
         print("signups = %s" % signups)
