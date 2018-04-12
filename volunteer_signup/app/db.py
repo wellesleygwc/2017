@@ -57,7 +57,7 @@ def create_db():
              username text not null)""")
     cursor.execute("insert or ignore into signups values (1, 'admin')")
 
-    cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
+    cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
 
 
     # Save (commit) the changes
