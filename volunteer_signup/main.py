@@ -65,6 +65,7 @@ def signup():
         lastname=request.form['lastname']
         email=request.form['email']
         phone=request.form['phone']
+        role=request.form['role']
 
 
         if password==password2:
