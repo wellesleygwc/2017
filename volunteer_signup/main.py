@@ -40,7 +40,6 @@ def login():
         print(request.form['Password'])
         username = request.form['Username']
         password = request.form['Password']
-
         error = db.checkuser(username, password)
         if error == "Congratulations":
 
