@@ -188,6 +188,6 @@ def list_signups(event_id):
 def add_event (Title, description, date, credits, numvolunteers, creator) :
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %d, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
+    cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %s, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
     connection.commit()
     connection.close()

@@ -173,8 +173,9 @@ def addevent():
             flash ('Please enter a valid number of credits')
             print (['please enter a valid number of credits'])
             return render_template('AddEvent.html')
+        NumberOfCredits= request.form['NumberOfCredits']
 
-        print("'%d'" % NumberOfCredits)
+        print("'%s'" % NumberOfCredits)
         flash('You have successfully created an event!')
         db.add_event(Title, Description, Date, NumberOfCredits, NumberOfVolunteers, session['username'])
         return redirect(url_for('events'))
