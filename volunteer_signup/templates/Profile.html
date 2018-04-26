@@ -1,66 +1,7 @@
-<html>
-  <head>
-    <title>Profile</title>
-      <link rel="stylesheet" href="static/menustyle.css" type="text/css">
-  </head>
-  <body>
-  {% include 'menu.html' %}
-  <div align="center">
-    <h1 id="header" align="middle">Update Your Name or Password</h1>
-    <form action="Profile" method="post">
-
-        <h4> Email </h4>
-    <input type="email" name="email" placeholder="" value={{email}}><br>
-        <h4> New Email </h4>
-    <input type="email" name="new_email" placeholder="" value=""><br>
-        <br>
-      <input type="submit" name="Update Email">
-    </form>
-<br><br>
-
-      <form action="Profile" method="post">
-
-        <h4> First Name </h4>
-    <input type="text" name="first_name" placeholder="" value={{firstname}}><br>
-        <h4> New First Name </h4>
-    <input type="text" name="new_first_name" placeholder="" value=""><br>
-        <h4> Last Name </h4>
-    <input type="text" name="new_last_name" placeholder="" value={{lastname}}><br>
-        <h4> New Last Name </h4>
-    <input type="text" name="last_name" placeholder="" value=""><br>
-        <br>
-      <input type="submit" name="Update Name">
-    </form>
-
-<br><br>
-
-    <form action="Profile" method="post">
-        <h4> Old Password </h4>
-    <input type="password" name="old_password" placeholder="Original password" value=""><br>
-        <h4> New Password </h4>
-    <input type="password" name="new_password" placeholder="New password" value=""><br>
-        <h4> Confirm New Password </h4>
-    <input type="password" name="confirm_password" placeholder="Confirm password" value=""><br> <br>
-      <input type="submit" name="Change Password">
-</form>
-      <h2><font color="red">{{error_message}}</font></h2>
-
-        <br>
-        <br>
-
-      <a href="#Delete">Delete Your Account</a>
-
-        <p> Click here to delete your account! </p>
-
-
-
-    <br><br><br><br><br><br><br>
-    <p4>  © 2017-18 Girls Who Code - Wellesley Chapter </p4>
-
-  </div>
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <div align="center">
         <meta charset="UTF-8">
             <title>Profile</title>
                 <link rel="stylesheet" href="static/menustyle.css" type="text/css">
@@ -75,7 +16,21 @@
          Email: {{user [3]}}<br>
          Phone: {{user [4]}}</p>
 <a href="EditProfile"><p align="center">Update Profile</p></a>
-<a href="/deleteaccount">Delete Your Account</a></h3></div>
+<button onclick="myFunction()">Delete Your Account</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var txt;
+    if (confirm("If you press OK, your account will be deleted.")) {
+        txt = "We are sad to see you go:(";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
 <h3 align="center"> <font size="2">© 2017-18 Girls Who Code - Wellesley Chapter</font></h3>
 </body>
 </html>
