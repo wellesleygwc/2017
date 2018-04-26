@@ -11,16 +11,24 @@
 
 <body>
 <fieldset>
-    <legend><h3>Create an Account</h3></legend>
-    <p>Fill out personal information in order to create a volunteer account</p>
+    <legend><h2>Create an account</h2></legend>
+        <p><strong>Fill out personal information in order to create a volunteer account</strong></p>
     <h2><font color="red">{{error}}</font></h2>
     <form method="post">
-        Enter Username:
+
+        <table>
+            <tr>
+                <td>Enter Username:
         <input type="text" placeholder="Username" name="username"
-               value="{{request.form.username}}"><br>
-        Enter Password:
-        <input type="password" placeholder="Password" name="password"><br>
-        Repeat Password: <input type="password" placeholder="Repeat Password" name="password2"><br>
+               value="{{request.form.username}}"></td>
+            </tr>
+            <tr>
+                <td> Enter Password:
+        <input type="password" placeholder="Password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Repeat Password:
+            <input type="password" placeholder="Repeat Password" name="password2">
         <script>
         function myFunction() {
 
@@ -33,13 +41,21 @@
             document.getElementById("demo").innerHTML = text;
 
             }
+            </script>
+                </td>
+            </tr>
+            <tr><td>Personal Information:</td></tr>
+            <tr><td><input type="text" placeholder="First Name" name="firstname"></td></tr>
+            <tr><td><input type="text" placeholder="Last Name" name="lastname"></td></tr>
+            <tr><td><input type="text" placeholder="Email" name="email"></td></tr>
+            <tr><td><input type="text" placeholder="Phone Number" name="phone"></td></tr>
 
-        </script>
-        Personal Information: <input type="text" placeholder="First Name" name="firstname">
-        <input type="text" placeholder="Last Name" name="lastname"> <br>
-        <input type="text" placeholder="Email" name="email"><br>
-        <input type="text" placeholder="Phone Number" name="phone"><br>
-        <input type="submit">
+
+            <tr><td><input type="radio" name="role" value="Administrator" >Administrator <input type="text" placeholder="Administrator Password" name="adminPass"></td></tr>
+            <tr><td><input type="radio" name="role" value="Volunteer" >Volunteers</td></tr>
+            <tr><td><input type="submit"></td></tr>
+
+        </table>
     </form>
 </fieldset>
 </body>

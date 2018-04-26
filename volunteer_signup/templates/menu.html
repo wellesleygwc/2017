@@ -8,7 +8,7 @@
     <table>
         <tr>
             <td width="300px">
-                <div id="mySidenav" class="sidenav">
+                <!--<div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <a href="Profile.html"> Profile </a>
                     <a href="#about">About</a>
@@ -16,9 +16,9 @@
                     <a href="#help">Help</a>
                 </div>
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
-                </span>
+                </span> -->
                 <img src="static\Sketch (4).png" width="60px">
-                <strong style="font-size:20px">Volunteer Sign Up
+                <strong style="font-size:16px">Golden Narwhal Volunteers
                 </strong>
             </td>
             <td width="500">
@@ -31,21 +31,34 @@
             </td>
         </tr>
     </table>
-<div class="secondnav">
-    <a class="active" href="home">Home</a>
+<div id="secondnav" class="secondnav">
+      {% if session.username %}
+    <a href="home">Home</a>
     <a href="Profile"> Profile </a>
-    <a href="login">Login</a>
-    <a href="#help">Help</a>
+    <a href="help">Help</a>
     <a href="about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="contact">Contact</a>
     <a href="events">Events</a>
-    <div class="search-container">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search..." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
+    <a href="logout">Log Out</a>
+  {% else %}
+    <a class="active" href="home">Home</a>
+    <a href="login">Login</a>
+    <a href="help">Help</a>
+    <a href="about">About</a>
+    <a href="contact">Contact</a>
+      {% endif %}
+
 </div>
+
+<script>
+    var secondnav = document.getElementById('secondnav');
+    var tags = secondnav.getElementsByTagName('a');
+    for (var tag in tags) {
+        console.log("tag = " + tag);
+    }
+    // class="active"
+</script>
+
 <div style="padding-left:16px">
 </div>
 </div>

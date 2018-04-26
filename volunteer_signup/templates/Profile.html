@@ -58,4 +58,24 @@
     <p4>  © 2017-18 Girls Who Code - Wellesley Chapter </p4>
 
   </div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>Profile</title>
+                <link rel="stylesheet" href="static/menustyle.css" type="text/css">
+</head>
+<body>
+{% include 'menu.html' %}
+ <div align="center">
+     <p style="font-family:palatino; font-size:50px; font-weight:bold" align="center">Profile</p>
+     <p style="font-family:palatino; font-size:30px;">Username: {{user [0]}} <br>
+         First Name: {{user [1]}}<br>
+         Last Name: {{user [2]}}<br>
+         Email: {{user [3]}}<br>
+         Phone: {{user [4]}}</p>
+<a href="EditProfile"><p align="center">Update Profile</p></a>
+<a href="/deleteaccount">Delete Your Account</a></h3></div>
+<h3 align="center"> <font size="2">© 2017-18 Girls Who Code - Wellesley Chapter</font></h3>
 </body>
+</html>

@@ -41,12 +41,25 @@ def create_db():
 
     cursor.execute("drop table if exists events")
     cursor.execute("create table if not exists events("+
-                   "description text primary key not null" +
-                   ", date text not null" +
-                   ", credits int not null default 0)")
-    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the club on a CS topic', '11/2/2017', 2)")
+                   "title text not null" +
+                   ", description text not null" +
+                   ", date text not null"+
+                   ", id integer primary key autoincrement"+
+                   ", credits int not null default 1"+
+                   ", numvolunteers int not null default 1"+
+                   ", creator text not null)")
+    cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 20, 'admin')")
+    cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 20, 'admin')")
 
-    cursor.execute("insert or ignore into events values ('Give presentation to the rest of the Club on a CS topic', '11/9/2017', 3)")
+    cursor.execute("drop table if exists signups")
+    cursor.execute(
+        """create table if not exists signups(
+             event_id integer,
+             username text not null,
+             unique(event_id,username))""")
+    cursor.execute("insert or ignore into signups values (1, 'admin')")
+
+    cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
 
 
     # Save (commit) the changes
@@ -108,6 +121,13 @@ def checkuser(username, password):
     print(row)
     return (str(row[0]), ())
 
+def getprofile (username):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("select username, firstname, lastname, email, phone from users where username= '%s'" % username)
+    row = cursor.fetchone()
+    return row
+
 def update_table1(column1_value, column2_new_value):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
@@ -135,6 +155,44 @@ def change_password(username, old_password, new_password):
     connection.commit()
     connection.close()
     return "password changed"
+
+def list_events():
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Retrieve all the events
+    cursor.execute("SELECT * FROM events, users WHERE events.creator = users.username")
+    rows = cursor.fetchall()
+    connection.close()
+    return rows
+
+def volunteer(id, username):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("insert or ignore into signups (event_id, username) values ('%s', '%s')" % (id, username) )
+    connection.commit()
+    connection.close()
+
+
+def list_signups(event_id):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Retrieve all the events
+    cursor.execute("SELECT username FROM signups WHERE event_id = %d" % (event_id))
+    rows = cursor.fetchall()
+    connection.close()
+
+    return rows
+
+
+def add_event (Title, description, date, credits, numvolunteers, creator) :
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %s, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
+    connection.commit()
+    connection.close()
+
 
 
 def delete_account(username):

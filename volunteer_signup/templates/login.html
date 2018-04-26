@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Volunteer Sign Up</title>
     <!--<link href="www.volunteersignup.org/css/bootstrap.min.css" rel="stylesheet">-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/menustyle.css" type="text/css">
-<style>
-
-
-  </style>
 
 </head>
 <body onscroll="myFunction()">
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="#help">Help</a>
 
-</div>
+{% include 'menu.html' %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
 <script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -30,49 +31,6 @@ function closeNav() {
 }
 </script>
 
-<div class="topnav">
-
-    <table>
-        <tr>
-            <td width="300px">
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#help">Help</a>
-                </div>
-                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
-                </span>
-                <img src="https://www.volunteersignup.org/images/square_logo.svg" width="50px">
-                <strong style="font-size:20px">Volunteer Sign Up
-                </strong>
-            </td>
-            <td width="500">
-            </td>
-            <td width="300px" align="right">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p><strong>Helping is EASY Now</strong></p>
-            </td>
-            <td width="300px" align="right">
-            </td>
-        </tr>
-    </table>
-<div class="secondnav">
-    <a class="active" href="#home">Home</a>
-    <a href="#signin">Sign In</a>
-    <a href="#help">Help</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <div class="search-container">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search..." name="search">
-            <button type="Submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-</div>
-<div style="padding-left:16px">
-</div>
-</div>
 <script>
 var secondnav = document.getElementbyId("secondnav");
 var sticky = secondnav.offsetTop;
@@ -94,7 +52,8 @@ function myFunction() {
 
           <label style="font-family:palatino;"
                  for="Username">Username: </label>
-        <input type="" name="Username" value="" id="Username" placeholder="Enter your email address"/>
+        <textarea rows="1" cols="60" type="" name="Username" value="" id="Username" placeholder="Enter your username"/></textarea>
+
         </div>
 
         <p class="break">
@@ -102,12 +61,13 @@ function myFunction() {
         <div>
           <label style="font-family:palatino;"
                  for="Password">Password: </label>
-            <input type="password" name="Password" value="" id="Password" placeholder="Enter your password"/>
+        <textarea rows="1" cols="60" type="password" name="Password" value="" id="Password" placeholder="Enter your password"/></textarea>
         </div>
 
 
         <div>
           <center><label style="font-family:palatino;">
+              <br>
               <button class="submit">Submit</button>
               <!--<input type="submit" value="Submit" id="Submit"></input></label></center>-->
         </div>
@@ -126,9 +86,10 @@ function myFunction() {
 
     </form>
 
+    <br>
+<h3 > <font size="2">© 2017-18 Girls Who Code - Wellesley Chapter</font></h3>
 
 </center>
-
 
 </body>
 </html>
