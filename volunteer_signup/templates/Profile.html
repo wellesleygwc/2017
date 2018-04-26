@@ -7,16 +7,29 @@
   {% include 'menu.html' %}
   <div align="center">
     <h1 id="header" align="middle">Update Your Name or Password</h1>
-    <form action="change name" method="post">
+    <form action="Profile" method="post">
 
         <h4> Email </h4>
-    <input type="email" name="new_email" placeholder="" value={{email}}><br>
+    <input type="email" name="email" placeholder="" value={{email}}><br>
+        <h4> New Email </h4>
+    <input type="email" name="new_email" placeholder="" value=""><br>
+        <br>
+      <input type="submit" name="Update Email">
+    </form>
+<br><br>
+
+      <form action="Profile" method="post">
+
         <h4> First Name </h4>
-    <input type="text" name="new_first_name" placeholder="" value={{firstname}}><br>
+    <input type="text" name="first_name" placeholder="" value={{firstname}}><br>
+        <h4> New First Name </h4>
+    <input type="text" name="new_first_name" placeholder="" value=""><br>
         <h4> Last Name </h4>
     <input type="text" name="new_last_name" placeholder="" value={{lastname}}><br>
+        <h4> New Last Name </h4>
+    <input type="text" name="last_name" placeholder="" value=""><br>
         <br>
-      <input type="submit" name="Update Name and Email">
+      <input type="submit" name="Update Name">
     </form>
 
 <br><br>
@@ -34,8 +47,11 @@
 
         <br>
         <br>
-<h3> Delete Your Account</h3>
+
+      <a href="#Delete">Delete Your Account</a>
+
         <p> Click here to delete your account! </p>
+
 
 
     <br><br><br><br><br><br><br>

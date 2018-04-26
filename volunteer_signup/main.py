@@ -83,6 +83,12 @@ def profile():
     username=session['username']
     status = db.change_password(username, old_password, new_password)
 
+    new_email = request.form['new_email']
+    new_first_name = request.form['new_first_name']
+    new_last_name = request.form['new_last_name']
+    print (' username:%s, new_email:%s, new_first_name:%s, new_last_name:%s' % (username, new_email, new_first_name, new_last_name))
+
+
     return render_template('login.html', error_message=status)
 
 
