@@ -25,6 +25,7 @@ def create_db():
                    ", email text not null" +
                    ", phone text not null)")
     cursor.execute("insert or ignore into users values ('admin', '1010', 'Joe', 'Jones', 'admin@example.com', '1234567890')")
+    cursor.execute("insert or ignore into users values ('test', 'test', 'Roger', 'Rogers', 'roger@roger.net', '1234567890')")
 
 # Create and populate your database tables. Here's an example to get you started.
     cursor.execute("drop table if exists volunteerhoursummary")
@@ -191,3 +192,34 @@ def add_event (Title, description, date, credits, numvolunteers, creator) :
     cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %s, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
     connection.commit()
     connection.close()
+
+
+
+def delete_account(username):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    cursor.execute("DELETE FROM users WHERE username = '%s'" % (username))
+
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
+
+#def change_credentials(username, new_email, ):
+   # connection = sqlite3.connect(database_file)
+    # cursor = connection.cursor()
+
+    # Try to retrieve a record from the users table that matches the username and password
+    # cursor.execute("select * from users where username='%s' and password='%s'" % (username, old_password))
+    # rows = cursor.fetchall()
+
+
+    # print (' username:%s, old_password:%s, new_password:%s' % (username, old_password, new_password))
+    # if len(rows) == 0:
+    #     return "bad password"
+    # sql = "update users SET  password='%s' WHERE username='%s'" % (new_password, username)
+    # print (sql)
+    # cursor.execute(sql)
+    # connection.commit()
+    # connection.close()
+    # return "password changed"

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <div align="center">
         <meta charset="UTF-8">
             <title>Profile</title>
                 <link rel="stylesheet" href="static/menustyle.css" type="text/css">
@@ -15,7 +16,21 @@
          Email: {{user [3]}}<br>
          Phone: {{user [4]}}</p>
 <a href="EditProfile"><p align="center">Update Profile</p></a>
-<a href="/deleteaccount">Delete Your Account</a></h3></div>
+<button onclick="myFunction()">Delete Your Account</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var txt;
+    if (confirm("If you press OK, your account will be deleted.")) {
+        txt = "We are sad to see you go:(";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
 <h3 align="center"> <font size="2">© 2017-18 Girls Who Code - Wellesley Chapter</font></h3>
 </body>
 </html>

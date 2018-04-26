@@ -6,14 +6,12 @@
 </head>
 <body>
   {% include 'menu.html' %}
-  </td>
-   </td>
 
 <table style="border-collapse: collapse;" width="100%" border="0">
     <thead align="left">
     <tr bgcolor="#33B8FF">
         <th>What And When</th>
-        <th>Availablity</th>
+        <th colspan="2">Availablity</th>
         <th> </th>
     </tr>
     </thead>
@@ -32,7 +30,8 @@
 
     <tr style="border-bottom:1px solid black">
 
-        <td>{{event[1]}}<br>{{event[2]}}<br>{{event[4]}} Credit(s)</td>
+        <td width="80%">{{event[0]}}<br>{{event[1]}}<br>
+            {{event[2]}}<br>{{event[4]}} Credit(s)</td>
         <td>{{event[5]}}</td>
 
         <td><a href="/volunteer?id={{event[3]}}">Sign Up</a></td>

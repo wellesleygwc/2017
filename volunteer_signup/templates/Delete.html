@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Your Account</title>
+
+    <script type="text/python">
+
+        def delete_account(username):
+            connection = sqlite3.connect(database_file)
+            cursor = connection.cursor()
+
+            cursor.execute("DELETE FROM users WHERE username = '%s'" % (username))
+
+            cursor.execute(sql)
+            connection.commit()
+            connection.close()
+
+    </script>
+</head>
+<body>
+
+<form action="Profile" method="post">
+        <h4> Delete </h4>
+    <input type="delete" name="delete_account" placeholder="Delete account" value=""><br> <br>
+      <input type="submit" name="Delete account">
+
+    <a href="#" onclick="delete_account">Click to delete your account!</a>
+
+</body>
+</html>

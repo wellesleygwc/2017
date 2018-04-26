@@ -109,6 +109,13 @@ def editprofile():
     user=db.getprofile(session ['username'])
     return render_template('Profile.html', error_message=status,user=user)
 
+    new_email = request.form['new_email']
+    new_first_name = request.form['new_first_name']
+    new_last_name = request.form['new_last_name']
+    print (' username:%s, new_email:%s, new_first_name:%s, new_last_name:%s' % (username, new_email, new_first_name, new_last_name))
+
+
+    return render_template('login.html', error_message=status)
 @app.route('/deleteaccount')
 def deleteaccount ():
     del session['username']
