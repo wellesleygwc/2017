@@ -40,7 +40,6 @@ def login():
         print(request.form['Password'])
         username = request.form['Username']
         password = request.form['Password']
-
         error = db.checkuser(username, password)
         if error == "Congratulations":
 
@@ -65,6 +64,7 @@ def signup():
         lastname=request.form['lastname']
         email=request.form['email']
         phone=request.form['phone']
+        role=request.form['role']
 
 
         if password==password2:
@@ -130,7 +130,7 @@ def volunteer():
     if request.method == "GET":
         event_id = int(request.args.get('id'))
         events = db.list_events()
-        event = events[event_id]
+        event = events[event_id - 1]
         signups = db.list_signups(event_id)
         print("event_id = %d" % event_id)
         print("signups = %s" % signups)
@@ -173,8 +173,9 @@ def addevent():
             flash ('Please enter a valid number of credits')
             print (['please enter a valid number of credits'])
             return render_template('AddEvent.html')
+        NumberOfCredits= request.form['NumberOfCredits']
 
-        print("'%d'" % NumberOfCredits)
+        print("'%s'" % NumberOfCredits)
         flash('You have successfully created an event!')
         db.add_event(Title, Description, Date, NumberOfCredits, NumberOfVolunteers, session['username'])
         return redirect(url_for('events'))

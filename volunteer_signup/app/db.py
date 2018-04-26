@@ -54,7 +54,8 @@ def create_db():
     cursor.execute(
         """create table if not exists signups(
              event_id integer,
-             username text not null)""")
+             username text not null,
+             unique(event_id,username))""")
     cursor.execute("insert or ignore into signups values (1, 'admin')")
 
     cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
@@ -187,6 +188,6 @@ def list_signups(event_id):
 def add_event (Title, description, date, credits, numvolunteers, creator) :
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %d, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
+    cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %s, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
     connection.commit()
     connection.close()
