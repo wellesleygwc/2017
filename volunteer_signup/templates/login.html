@@ -52,8 +52,7 @@ function myFunction() {
 
           <label style="font-family:palatino;"
                  for="Username">Username: </label>
-        <textarea rows="1" cols="60" type="" name="Username" value="" id="Username" placeholder="Enter your username"/></textarea>
-
+                <input style="font-family:palatino;" type="username" placeholder="Username" name="Username">
         </div>
 
         <p class="break">
@@ -61,7 +60,7 @@ function myFunction() {
         <div>
           <label style="font-family:palatino;"
                  type="Password">Password: </label>
-        <input style="font-family:palatino;" type="password" placeholder="Password" name="Password"></td>
+        <input style="font-family:palatino;" type="password" placeholder="Password" name="Password">
 
          </div>
 
@@ -78,7 +77,23 @@ function myFunction() {
         <div>
 
             <p_forgot style="font-family:palatino;">
-                Forgot your Username or Password?</p_forgot></div>
+                Forgot your Username or Password?</p_forgot></div><br>
+<button onclick="myFunction()">Click here</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var txt;
+    var person = prompt("Please enter your email:", "admin@example.com");
+    if (person == null || person == "") {
+        txt = "You cancelled.";
+    } else {
+        txt = "You will receive an email of your username and password shortly. Remember it's at the email " + person;
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
 
         <p class="break">
 

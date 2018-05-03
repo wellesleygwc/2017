@@ -3,6 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.accordion {
+    background-color: #ddd;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px;
+    width: 20%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 17px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #bbb;
+}
+
+.panel {
+    padding: 0 10px;
+    display: none;
+    background-color: #00ddff;
+    overflow: hidden;
+}
+</style>
 </head>
 <body>
   {% include 'menu.html' %}
@@ -30,10 +56,30 @@
 
     <tr style="border-bottom:1px solid black">
 
-        <td>{{event[0]}}<br>{{event[2]}}<br>{{event[4]}} Credit(s)</td>
-        <td>{{event[5]}}</td>
+        <td>{{event[0]}}<br>
+            <button class="accordion">Description</button>
+<div class="panel">
+  <p>{{event[1]}}</p>
+</div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
 
-        <td><a href="/volunteer?id={{event[3]-1}}">Sign Up</a></td>
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+</script>
+            <br>{{event[2]}}<br>{{event[4]}} Credit(s)</td>
+        <td>{{event[5]}}
+            <br><a href="/volunteer?id={{event[3]-1}}">Sign Up</a></td>
     </tr>
 
     {% endfor %}
