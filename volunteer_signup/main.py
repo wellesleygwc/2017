@@ -65,13 +65,33 @@ def signup():
         email=request.form['email']
         phone=request.form['phone']
         role=request.form['role']
+        adminPass = request.form['adminPass']
+        EventCPass = request.form['EventCPass']
+
+
+        print (role)
+        if role=="Administrator":
+            if adminPass == "TQW5Y":
+                print ("success on admin Pass")
+            else:
+                error = "The administrator code is incorrect please try again or ask your administrator for the code."
+                return render_template("sign_up.html", error=error)
+
+
+        if role =="EventC":
+                if EventCPass== "LSVY6":
+                    print ("success on EventCPass")
+                else:
+                    error = "The event coordinator code is incorrect please try again or ask your administrator for the code."
+                    return render_template("sign_up.html", error=error)
+
 
 
         if password==password2:
             if db.userexists(username):
                 error="Username already in use"
             else:
-                db.adduser(username, password, firstname, lastname, email, phone)
+                db.adduser(username, role, password, firstname, lastname, email, phone)
                 flash('You have successfully created an account!')
                 return render_template("login.html")
         else:
