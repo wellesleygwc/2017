@@ -15,7 +15,9 @@ def create_db():
                    ", column3 int not null default 0)")
     cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
 
-    # Create and populate your database tables. Here's an example to get you started.
+    #
+    # Users
+    #
     cursor.execute("drop table if exists users")
     cursor.execute("create table if not exists users("+
                    "username text primary key not null" +
@@ -28,7 +30,9 @@ def create_db():
     cursor.execute("insert or ignore into users values ('admin', 'Administrator', '1010', 'Joe', 'Jones', 'admin@example.com', '1234567890')")
     cursor.execute("insert or ignore into users values ('test', 'EventC', 'test', 'Roger', 'Rogers', 'roger@roger.net', '1234567890')")
 
-# Create and populate your database tables. Here's an example to get you started.
+    #
+    # volunteerhoursummary
+    #
     cursor.execute("drop table if exists volunteerhoursummary")
     cursor.execute("create table if not exists volunteerhoursummary("+
                    "column1 text primary key not null" +
@@ -40,6 +44,9 @@ def create_db():
     cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
     cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
 
+    #
+    # events
+    #
     cursor.execute("drop table if exists events")
     cursor.execute("create table if not exists events("+
                    "title text not null" +
@@ -50,17 +57,16 @@ def create_db():
                    ", numvolunteers int not null default 1"+
                    ", creator text not null)")
     cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 20, 'admin')")
-    #cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 20, 'admin')")
 
+    #
+    # signups
+    #
     cursor.execute("drop table if exists signups")
     cursor.execute(
         """create table if not exists signups(
              event_id integer,
              username text not null,
              unique(event_id,username))""")
-    #cursor.execute("insert or ignore into signups values (1, 'admin')")
-
-    #cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
 
 
     # Save (commit) the changes
@@ -146,8 +152,6 @@ def change_password(username, old_password, new_password):
     cursor.execute("select * from users where username='%s' and password='%s'" % (username, old_password))
     rows = cursor.fetchall()
 
-
-    print (' username:%s, old_password:%s, new_password:%s' % (username, old_password, new_password))
     if len(rows) == 0:
         return "bad password"
     sql = "update users SET  password='%s' WHERE username='%s'" % (new_password, username)
@@ -175,16 +179,13 @@ def volunteer(id, username):
     connection.close()
 
 def update_event_availability(id):
-    print("updating event availability")
-    print(id)
+    event_id = int(id)+1
 
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("update events set numvolunteers=numvolunteers-1 WHERE id='%s'" % (id) )
+    cursor.execute("update events set numvolunteers=numvolunteers-1 WHERE id='%s'" % (event_id) )
     connection.commit()
-    cursor.execute("select numvolunteers from events where id='%s'" % (id))
-    rows = cursor.fetchone()
-    print(rows)
+
     connection.close()
 
 def list_signups(event_id):
