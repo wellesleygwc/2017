@@ -159,10 +159,6 @@ def volunteer():
         events = db.list_events()
         event = events[event_id - 1]
         signups = db.list_signups(event_id)
-        print("event_id = %d" % event_id)
-        print("signups = %s" % signups)
-        availability = event[5]-1
-        print("availability = %d" % availability)
         return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
 
     db.volunteer(request.form['id'], session['username'])
