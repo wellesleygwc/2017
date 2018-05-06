@@ -19,13 +19,14 @@ def create_db():
     cursor.execute("drop table if exists users")
     cursor.execute("create table if not exists users("+
                    "username text primary key not null" +
+                   ", role text not null" +
                    ", password text not null" +
                    ", firstname text not null" +
                    ", lastname text not null" +
                    ", email text not null" +
                    ", phone text not null)")
-    cursor.execute("insert or ignore into users values ('admin', '1010', 'Joe', 'Jones', 'admin@example.com', '1234567890')")
-    cursor.execute("insert or ignore into users values ('test', 'test', 'Roger', 'Rogers', 'roger@roger.net', '1234567890')")
+    cursor.execute("insert or ignore into users values ('admin', 'Administrator', '1010', 'Joe', 'Jones', 'admin@example.com', '1234567890')")
+    cursor.execute("insert or ignore into users values ('test', 'EventC', 'test', 'Roger', 'Rogers', 'roger@roger.net', '1234567890')")
 
 # Create and populate your database tables. Here's an example to get you started.
     cursor.execute("drop table if exists volunteerhoursummary")
@@ -82,10 +83,10 @@ def read_table1(column1_value):
 
     return row[0]
 
-def adduser(username, password, firstname, lastname, email, phone):
+def adduser(username, role, password, firstname, lastname, email, phone):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    sql = "insert or ignore into users values ('%s', '%s', '%s', '%s', '%s', '%s')" % (username, password, firstname, lastname, email, phone)
+    sql = "insert or ignore into users values ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (username, role, password, firstname, lastname, email, phone)
     cursor.execute(sql)
     connection.commit()
     connection.close()
