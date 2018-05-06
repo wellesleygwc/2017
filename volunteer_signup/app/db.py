@@ -48,7 +48,7 @@ def create_db():
                    ", credits int not null default 1"+
                    ", numvolunteers int not null default 1"+
                    ", creator text not null)")
-    #cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 20, 'admin')")
+    cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 20, 'admin')")
     #cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 20, 'admin')")
 
     cursor.execute("drop table if exists signups")
@@ -57,9 +57,9 @@ def create_db():
              event_id integer,
              username text not null,
              unique(event_id,username))""")
-    cursor.execute("insert or ignore into signups values (1, 'admin')")
+    #cursor.execute("insert or ignore into signups values (1, 'admin')")
 
-    cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
+    #cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
 
 
     # Save (commit) the changes
@@ -161,7 +161,7 @@ def list_events():
     cursor = connection.cursor()
 
     # Retrieve all the events
-    cursor.execute("SELECT * FROM events, users WHERE events.creator = users.username")
+    cursor.execute("SELECT * FROM events")
     rows = cursor.fetchall()
     connection.close()
     return rows
@@ -173,6 +173,18 @@ def volunteer(id, username):
     connection.commit()
     connection.close()
 
+def update_event_availability(id):
+    print("updating event availability")
+    print(id)
+
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("update events set numvolunteers=numvolunteers-1 WHERE id='%s'" % (id) )
+    connection.commit()
+    cursor.execute("select numvolunteers from events where id='%s'" % (id))
+    rows = cursor.fetchone()
+    print(rows)
+    connection.close()
 
 def list_signups(event_id):
     connection = sqlite3.connect(database_file)
