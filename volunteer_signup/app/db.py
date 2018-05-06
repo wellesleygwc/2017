@@ -8,12 +8,12 @@ def create_db():
     cursor = connection.cursor()
 
     # Create and populate your database tables. Here's an example to get you started.
-    cursor.execute("drop table if exists table1")
-    cursor.execute("create table if not exists table1("+
-                   "column1 text primary key not null" +
-                   ", column2 text not null" +
-                   ", column3 int not null default 0)")
-    cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
+    # cursor.execute("drop table if exists table1")
+    # cursor.execute("create table if not exists table1("+
+    #                "column1 text primary key not null" +
+    #                ", column2 text not null" +
+    #                ", column3 int not null default 0)")
+    # cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
 
     #
     # Users
@@ -29,6 +29,7 @@ def create_db():
                    ", phone text not null)")
     cursor.execute("insert or ignore into users values ('admin', 'Administrator', '1010', 'Joe', 'Jones', 'admin@example.com', '1234567890')")
     cursor.execute("insert or ignore into users values ('test', 'EventC', 'test', 'Roger', 'Rogers', 'roger@roger.net', '1234567890')")
+    cursor.execute("insert or ignore into users values ('volunteerBeth', 'Volunteer', 'badPassword', 'Beth', 'Rogers', 'beth@rogers.net', '1234567890')")
 
 
     #
