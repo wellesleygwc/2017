@@ -105,7 +105,7 @@ def checkuser(username, password):
 def getprofile (username):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("select username, firstname, lastname, email, phone from users where username= '%s'" % username)
+    cursor.execute("select username, firstname, lastname, email, phone, role from users where username= '%s'" % username)
     row = cursor.fetchone()
     return row
 
