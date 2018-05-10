@@ -8,14 +8,16 @@ def create_db():
     cursor = connection.cursor()
 
     # Create and populate your database tables. Here's an example to get you started.
-    cursor.execute("drop table if exists table1")
-    cursor.execute("create table if not exists table1("+
-                   "column1 text primary key not null" +
-                   ", column2 text not null" +
-                   ", column3 int not null default 0)")
-    cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
+    # cursor.execute("drop table if exists table1")
+    # cursor.execute("create table if not exists table1("+
+    #                "column1 text primary key not null" +
+    #                ", column2 text not null" +
+    #                ", column3 int not null default 0)")
+    # cursor.execute("insert or ignore into table1 values ('value1', 'value2', 123)")
 
-    # Create and populate your database tables. Here's an example to get you started.
+    #
+    # Users
+    #
     cursor.execute("drop table if exists users")
     cursor.execute("create table if not exists users("+
                    "username text primary key not null" +
@@ -27,19 +29,12 @@ def create_db():
                    ", phone text not null)")
     cursor.execute("insert or ignore into users values ('admin', 'Administrator', '1010', 'Joe', 'Jones', 'admin@example.com', '1234567890')")
     cursor.execute("insert or ignore into users values ('test', 'EventC', 'test', 'Roger', 'Rogers', 'roger@roger.net', '1234567890')")
+    cursor.execute("insert or ignore into users values ('volunteerBeth', 'Volunteer', 'badPassword', 'Beth', 'Rogers', 'beth@rogers.net', '1234567890')")
 
-# Create and populate your database tables. Here's an example to get you started.
-    cursor.execute("drop table if exists volunteerhoursummary")
-    cursor.execute("create table if not exists volunteerhoursummary("+
-                   "column1 text primary key not null" +
-                   ", column2 text not null" +
-                   ", column3 int not null default 0)")
-    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
-    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
-    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
-    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
-    cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
 
+    #
+    # events
+    #
     cursor.execute("drop table if exists events")
     cursor.execute("create table if not exists events("+
                    "title text not null" +
@@ -49,18 +44,17 @@ def create_db():
                    ", credits int not null default 1"+
                    ", numvolunteers int not null default 1"+
                    ", creator text not null)")
-    #cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 20, 'admin')")
-    #cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 20, 'admin')")
+    cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 20, 'admin')")
 
+    #
+    # signups
+    #
     cursor.execute("drop table if exists signups")
     cursor.execute(
         """create table if not exists signups(
              event_id integer,
              username text not null,
              unique(event_id,username))""")
-    cursor.execute("insert or ignore into signups values (1, 'admin')")
-
-    cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
 
 
     # Save (commit) the changes
@@ -70,18 +64,6 @@ def create_db():
     # Just be sure any changes have been committed or they will be lost.
     connection.close()
 
-
-def read_table1(column1_value):
-    connection = sqlite3.connect(database_file)
-    cursor = connection.cursor()
-
-    # Retrieve a record from table1 whose column1 value matches the value passed to this function
-    cursor.execute("select * from table where column='%s'" % (column1_value))
-    row = cursor.fetchone()
-
-    connection.close()
-
-    return row[0]
 
 def adduser(username, role, password, firstname, lastname, email, phone):
     connection = sqlite3.connect(database_file)
@@ -96,7 +78,6 @@ def userexists(username):
     cursor = connection.cursor()
     cursor.execute("select * from users where username='%s'" % (username))
     rows = cursor.fetchall()
-    print(rows)
 
     connection.close()
 
@@ -119,7 +100,6 @@ def checkuser(username, password):
         return("Incorrect password")
 
     connection.close()
-    print(row)
     return (str(row[0]), ())
 
 def getprofile (username):
@@ -129,14 +109,6 @@ def getprofile (username):
     row = cursor.fetchone()
     return row
 
-def update_table1(column1_value, column2_new_value):
-    connection = sqlite3.connect(database_file)
-    cursor = connection.cursor()
-
-    # Update the column2 value in table1 whose column1 value matches the value passed to this function
-    cursor.execute("UPDATE table1 SET colum2='%s' WHERE column1='%s'" % (column2_new_value, column1_value))
-
-    connection.close()
 
 def change_password(username, old_password, new_password):
     connection = sqlite3.connect(database_file)
@@ -146,12 +118,9 @@ def change_password(username, old_password, new_password):
     cursor.execute("select * from users where username='%s' and password='%s'" % (username, old_password))
     rows = cursor.fetchall()
 
-
-    print (' username:%s, old_password:%s, new_password:%s' % (username, old_password, new_password))
     if len(rows) == 0:
         return "bad password"
     sql = "update users SET  password='%s' WHERE username='%s'" % (new_password, username)
-    print (sql)
     cursor.execute(sql)
     connection.commit()
     connection.close()
@@ -162,7 +131,7 @@ def list_events():
     cursor = connection.cursor()
 
     # Retrieve all the events
-    cursor.execute("SELECT * FROM events, users WHERE events.creator = users.username")
+    cursor.execute("SELECT * FROM events")
     rows = cursor.fetchall()
     connection.close()
     return rows
@@ -173,6 +142,22 @@ def volunteer(id, username):
     cursor.execute("insert or ignore into signups (event_id, username) values ('%s', '%s')" % (id, username) )
     connection.commit()
     connection.close()
+
+def get_event_availability(id):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute("""SELECT numvolunteers
+                   FROM events 
+                   WHERE id='%s' """ % (id) )
+    needed = cursor.fetchone()
+
+    cursor.execute("""SELECT count(*)
+                   FROM signups 
+                   WHERE event_id='%s' """ % (id) )
+    filled = cursor.fetchone()
+    connection.close()
+
+    return needed[0]-filled[0]
 
 
 def list_signups(event_id):
@@ -187,13 +172,12 @@ def list_signups(event_id):
     return rows
 
 
-def add_event (Title, description, date, credits, numvolunteers, creator) :
+def add_event (Title, description, date, credits, numvolunteers, creator):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
     cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %s, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
     connection.commit()
     connection.close()
-
 
 
 def delete_account(username):
@@ -202,7 +186,6 @@ def delete_account(username):
 
     cursor.execute("DELETE FROM users WHERE username = '%s'" % (username))
 
-    cursor.execute(sql)
     connection.commit()
     connection.close()
 
@@ -224,3 +207,47 @@ def delete_account(username):
     # connection.commit()
     # connection.close()
     # return "password changed"
+
+    #
+    # volunteerhoursummary
+    #
+    # cursor.execute("drop table if exists volunteerhoursummary")
+    # cursor.execute("create table if not exists volunteerhoursummary("+
+    #                "column1 text primary key not null" +
+    #                ", column2 text not null" +
+    #                ", column3 int not null default 0)")
+    # cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    # cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    # cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    # cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+    # cursor.execute("insert or ignore into volunteerhoursummary values ('leiblingfach', 'scholade', 123)")
+
+
+#
+# Example of reading a table.
+# To retrieve the information stored in a database, we use a "SELECT" statement:
+#
+# def read_table1(column1_value):
+#     connection = sqlite3.connect(database_file)
+#     cursor = connection.cursor()
+#
+#     # Retrieve a record from table1 whose column1 value matches the value passed to this function
+#     cursor.execute("select * from table where column='%s'" % (column1_value))
+#     row = cursor.fetchone()
+#
+#     connection.close()
+#
+#     return row[0]
+
+#
+# Example of updating a table.
+# To edit and save the information stored in a database, we use an "UPDATE" statement:
+#
+# def update_table1(column1_value, column2_new_value):
+#     connection = sqlite3.connect(database_file)
+#     cursor = connection.cursor()
+#
+#     # Update the column2 value in table1 whose column1 value matches the value passed to this function
+#     cursor.execute("UPDATE table1 SET colum2='%s' WHERE column1='%s'" % (column2_new_value, column1_value))
+#     connection.commit()
+#     connection.close()

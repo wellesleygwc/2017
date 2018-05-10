@@ -108,6 +108,7 @@ def profile():
     user=db.getprofile(session ['username'])
     print (user)
     return render_template('Profile.html', user=user)
+
 @app.route('/EditProfile', methods=['GET', 'POST'])
 def editprofile():
     if not 'username' in session:
@@ -134,14 +135,17 @@ def editprofile():
     new_last_name = request.form['new_last_name']
     print (' username:%s, new_email:%s, new_first_name:%s, new_last_name:%s' % (username, new_email, new_first_name, new_last_name))
 
-
     return render_template('login.html', error_message=status)
+
+#
+# Delete a user account
+#
 @app.route('/deleteaccount')
 def deleteaccount ():
     del session['username']
     return redirect(url_for('home'))
 
-#Log out when hit log out button
+# Log out when hit log out button
 @app.route('/logout')
 def logout():
     del session['username']
@@ -159,9 +163,8 @@ def volunteer():
         events = db.list_events()
         event = events[event_id - 1]
         signups = db.list_signups(event_id)
-        print("event_id = %d" % event_id)
-        print("signups = %s" % signups)
         return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
+
     db.volunteer(request.form['id'], session['username'])
     return redirect(url_for('events'))
 
