@@ -45,6 +45,7 @@ def create_db():
                    ", description text not null" +
                    ", date text not null"+
                    ", id integer primary key autoincrement"+
+                   ", time text not null"+
                    ", credits int not null default 1"+
                    ", numvolunteers int not null default 1"+
                    ", creator text not null)")
@@ -59,7 +60,7 @@ def create_db():
              unique(event_id,username))""")
     cursor.execute("insert or ignore into signups values (1, 'admin')")
 
-    cursor.execute("insert or ignore into events (title,description,date,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 'admin')")
+    cursor.execute("insert or ignore into events (title,description,date,time,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', '2:00 PM', null, 3, 'admin')")
 
 
     # Save (commit) the changes
@@ -166,6 +167,11 @@ def list_events():
     connection.close()
     return rows
 
+
+def update_table():
+    pass
+
+
 def volunteer(id, username):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
@@ -173,6 +179,14 @@ def volunteer(id, username):
     connection.commit()
     connection.close()
 
+def update_table_updateavailability(event_id, signupped):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Update the column2 value in table1 whose column1 value matches the value passed to this function
+    cursor.execute("UPDATE events SET numvolunteers=%s WHERE id='%s'" % (signupped, event_id))
+
+    connection.close()
 
 def list_signups(event_id):
     connection = sqlite3.connect(database_file)
@@ -186,10 +200,10 @@ def list_signups(event_id):
     return rows
 
 
-def add_event (Title, description, date, credits, numvolunteers, creator) :
+def add_event (Title, description, date, time, credits, numvolunteers, creator) :
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %s, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
+    cursor.execute("insert or ignore into events (title, description, date, time, credits, numvolunteers, creator) values ('%s', '%s', '%s', '%s', %d, %d, '%s')" % (Title, description, date, time, credits, numvolunteers, creator) )
     connection.commit()
     connection.close()
 

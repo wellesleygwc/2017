@@ -71,14 +71,8 @@ vertical-align: top;"
             <!--<input type="Description" name="Description" value="{{request.form.description}}" id="Description" placeholder="Enter your Event Description"/> -->
         <textarea rows="10" cols="58" name="Description" value="{{request.form.description}}" id="Description" placeholder="Enter your Event Description"></textarea>
         </div>
-<p class="break">
-     <div>
-          <label style="font-family:palatino;"
-                 for="Number Of Volunteers">Number Of Volunteers: </label>
-            <input type="number" name="NumberOfVolunteers" value="{{request.form.numberofvolunteers}}" id="NumberOfVolunteers" placeholder="Enter your Number Of Volunteers"/>
-        </div>
-<p class="break">
         <div>
+            <p class="break"></p>
           <label style="font-family:palatino;"
                  for="Date">Date: </label>
             <input type="Date" name="Date" value="{{request.form.date}}" id="Date" placeholder="Enter your Event's Date"/>
@@ -91,9 +85,16 @@ vertical-align: top;"
         </div>
 <p class="break">
         <div>
+        <p class="break">
+     <div>
+          <label style="font-family:palatino;"
+                 for="Number Of Volunteers">Number Of Volunteers: </label>
+            <input type="number" name="NumberOfVolunteers" value="{{request.form.numberofvolunteers}}" id="NumberOfVolunteers" placeholder="Enter the Number"/>
+        </div>
+<p class="break">
           <label style="font-family:palatino;"
                  for="Number Of Credits">Number Of Credits: </label>
-            <input type="number" name="NumberOfCredits" value="{{request.form.numberofcredits}}" id="NumberOfCredits" placeholder="Enter the number of credits"/>
+            <input type="number" name="NumberOfCredits" value="{{request.form.numberofcredits}}" id="NumberOfCredits" placeholder="Enter the number"/>
         </div>
 <p class="break">
         <div>
