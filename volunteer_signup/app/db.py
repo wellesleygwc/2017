@@ -143,15 +143,22 @@ def volunteer(id, username):
     connection.commit()
     connection.close()
 
-def update_event_availability(id):
-    event_id = int(id)+1
-
+def get_event_availability(id):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("update events set numvolunteers=numvolunteers-1 WHERE id='%s'" % (event_id) )
-    connection.commit()
+    cursor.execute("""SELECT numvolunteers
+                   FROM events 
+                   WHERE id='%s' """ % (id) )
+    needed = cursor.fetchone()
 
+    cursor.execute("""SELECT count(*)
+                   FROM signups 
+                   WHERE event_id='%s' """ % (id) )
+    filled = cursor.fetchone()
     connection.close()
+
+    return needed[0]-filled[0]
+
 
 def list_signups(event_id):
     connection = sqlite3.connect(database_file)
@@ -165,13 +172,12 @@ def list_signups(event_id):
     return rows
 
 
-def add_event (Title, description, date, credits, numvolunteers, creator) :
+def add_event (Title, description, date, credits, numvolunteers, creator):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
     cursor.execute("insert or ignore into events (title, description, date, credits, numvolunteers, creator) values ('%s', '%s', '%s', %s, %d, '%s')" % (Title, description, date, credits, numvolunteers, creator) )
     connection.commit()
     connection.close()
-
 
 
 def delete_account(username):

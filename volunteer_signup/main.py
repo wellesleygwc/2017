@@ -166,7 +166,6 @@ def volunteer():
         return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
 
     db.volunteer(request.form['id'], session['username'])
-    db.update_event_availability(request.form['id'])
     return redirect(url_for('events'))
 
 # add event
