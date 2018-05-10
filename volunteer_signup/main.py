@@ -141,7 +141,7 @@ def volunteer():
         signups = db.list_signups(event_id)
         print("event_id = %d" % event_id)
         print("signups = %s" % signups)
-        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
+        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups, db=db)
     db.volunteer(request.form['id'], session['username'])
     return redirect(url_for('events'))
 
