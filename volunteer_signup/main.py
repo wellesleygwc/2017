@@ -74,7 +74,7 @@ def signup():
             if adminPass == "TQW5Y":
                 print ("success on admin Pass")
             else:
-                error = "The administrator code is incorrect please try again or ask your administrator for the code."
+                error = "The administrator code is incorrect please try again or ask an administrator for the code."
                 return render_template("sign_up.html", error=error)
 
 
@@ -82,7 +82,7 @@ def signup():
                 if EventCPass== "LSVY6":
                     print ("success on EventCPass")
                 else:
-                    error = "The event coordinator code is incorrect please try again or ask your administrator for the code."
+                    error = "The event coordinator code is incorrect please try again or ask an administrator for the code."
                     return render_template("sign_up.html", error=error)
 
 
