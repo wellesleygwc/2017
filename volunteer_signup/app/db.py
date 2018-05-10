@@ -86,7 +86,7 @@ def userexists(username):
     else:
         return False
 
-#dfhkdsjfksdmnckdjkdmkdcjnkdnj
+
 def checkuser(username, password):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
