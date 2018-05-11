@@ -160,10 +160,13 @@ def events():
 def volunteer():
     if request.method == "GET":
         event_id = int(request.args.get('id'))
-        events = db.list_events()
-        event = events[event_id - 1]
-        signups = db.list_signups(event_id)
         print("event_id = %d" % event_id)
+
+        events = db.list_events()
+        print("events = %s" % events)
+
+        event = events[event_id-1]
+        signups = db.list_signups(event_id)
         print("signups = %s" % signups)
         print("volunteers = %d" % event[5])
         return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
@@ -173,7 +176,6 @@ def volunteer():
         return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups, db=db)
     db.volunteer(request.form['id'], session['username'])
     return redirect(url_for('events'))
-
 # add event
 @app.route('/addevent', methods=['GET','POST'])
 def addevent():
