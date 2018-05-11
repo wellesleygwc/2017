@@ -168,6 +168,9 @@ def volunteer():
         print("volunteers = %d" % event[5])
         return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
 
+        print("event_id = %d" % event_id)
+        print("signups = %s" % signups)
+        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups, db=db)
     db.volunteer(request.form['id'], session['username'])
     return redirect(url_for('events'))
 
