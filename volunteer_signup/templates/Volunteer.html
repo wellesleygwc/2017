@@ -54,12 +54,18 @@ function myFunction() {
 Title: {{event[0]}} <br>
 Description: {{event[1]}} <br>
 Date: {{event[2]}} <br>
-Credits: {{event[4]}} <br>
+  Time: {{event[4]}} <br>
+Credits: {{event[3]}} <br>
 Creator: {{event[6]}} <br>
   Signed up already:
   <ul>
   {% for username in signups %}
-  <li> {{username[0]}} </li>
+  <li>
+
+      {{db.getprofile(username[0])[1]}}
+        {{db.getprofile(username[0])[2]}}
+
+  </li>
   {% endfor %}
   </ul>
 

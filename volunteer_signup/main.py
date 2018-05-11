@@ -166,8 +166,14 @@ def volunteer():
         events = db.list_events()
         event = events[event_id - 1]
         signups = db.list_signups(event_id)
+        print("event_id = %d" % event_id)
+        print("signups = %s" % signups)
+        print("volunteers = %d" % event[5])
         return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
 
+        print("event_id = %d" % event_id)
+        print("signups = %s" % signups)
+        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups, db=db)
     db.volunteer(request.form['id'], session['username'])
     return redirect(url_for('events'))
 
@@ -206,11 +212,10 @@ def addevent():
             flash ('Please enter a valid number of credits')
             print (['please enter a valid number of credits'])
             return render_template('AddEvent.html')
-        NumberOfCredits= request.form['NumberOfCredits']
 
         print("'%s'" % NumberOfCredits)
         flash('You have successfully created an event!')
-        db.add_event(Title, Description, Date, NumberOfCredits, NumberOfVolunteers, session['username'])
+        db.add_event(Title, Description, Date, Time, NumberOfCredits, NumberOfVolunteers, session['username'])
         return redirect(url_for('events'))
 
 
