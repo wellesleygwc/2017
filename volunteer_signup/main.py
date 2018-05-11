@@ -104,11 +104,11 @@ def signup():
 def profile():
     if not 'username' in session:
         print ("no session")
+
         return render_template('login.html')
     user=db.getprofile(session ['username'])
     print (user)
     return render_template('Profile.html', user=user)
-
 @app.route('/EditProfile', methods=['GET', 'POST'])
 def editprofile():
     if not 'username' in session:
@@ -154,7 +154,10 @@ def logout():
 # Events page
 @app.route('/events')
 def events():
-    return render_template('Events.html', events=db.list_events())
+
+    user=db.getprofile(session ['username'])
+    print (user)
+    return render_template('Events.html',events=db.list_events(), user=user)
 
 @app.route('/volunteer', methods=['GET','POST'])
 def volunteer():
