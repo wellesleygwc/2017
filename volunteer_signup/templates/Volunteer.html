@@ -61,10 +61,7 @@ Creator: {{event[6]}} <br>
   <ul>
   {% for username in signups %}
   <li>
-
-      {{db.getprofile(username[0])[1]}}
-        {{db.getprofile(username[0])[2]}}
-
+      {{username[0]}}
   </li>
   {% endfor %}
   </ul>
