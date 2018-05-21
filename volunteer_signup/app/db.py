@@ -45,8 +45,8 @@ def create_db():
                    ", credits int not null default 1"+
                    ", numvolunteers int not null default 1"+
                    ", creator text not null)")
-    #cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, 2, 20, 'admin')")
-    #cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, 3, 20, 'admin')")
+    #cursor.execute("insert or ignore into events values ('Presentation 1', 'Give presentation to the rest of the club on a CS topic', '11/2/2017', null, '10 AM', 2, 20, 'admin')")
+    #cursor.execute("insert or ignore into events values ('Presentation 2', 'Give presentation', '11/9/2017', null, '11 AM', 3, 20, 'admin')")
 
     #
     # signups
@@ -57,10 +57,7 @@ def create_db():
              event_id integer,
              username text not null,
              unique(event_id,username))""")
-    cursor.execute("insert or ignore into signups values (1, 'admin')")
-
-    cursor.execute("insert or ignore into events (title,description,date,time,credits,numvolunteers,creator) values ('Presentation 2', 'Give presentation', '11/9/2017', '2:00 PM', null, 3, 'admin')")
-
+    #cursor.execute("insert or ignore into signups values (1, 'admin')")
 
     # Save (commit) the changes
     connection.commit()
@@ -144,25 +141,17 @@ def list_events():
 def volunteer(id, username):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("insert or ignore into signups (event_id, username) values ('%s', '%s')" % (id, username) )
+    cursor.execute("insert or ignore into signups (event_id, username) values (%d, '%s')" % (id, username) )
     connection.commit()
     connection.close()
 
-def get_event_availability(id):
+def get_events_list():
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
-    cursor.execute("""SELECT numvolunteers
-                   FROM events 
-                   WHERE id='%s' """ % (id) )
-    needed = cursor.fetchone()
-
-    cursor.execute("""SELECT count(*)
-                   FROM signups 
-                   WHERE event_id='%s' """ % (id) )
-    filled = cursor.fetchone()
+    cursor.execute(""" Select events.*,numvolunteers-count(signups.username) as available from events left join signups on events.id=signups.event_id group by events.id""")
+    rows = cursor.fetchall()
     connection.close()
-
-    return needed[0]-filled[0]
+    return rows
 
 
 def list_signups(event_id):

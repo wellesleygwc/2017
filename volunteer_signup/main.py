@@ -36,8 +36,6 @@ def contact():
 def login():
     if request.method == 'POST':
 
-        print(request.form['Username'])
-        print(request.form['Password'])
         username = request.form['Username']
         password = request.form['Password']
         error = db.checkuser(username, password)
@@ -157,6 +155,11 @@ def events():
 
     user=db.getprofile(session ['username'])
     print (user)
+
+    signedUp = db.get_events_list()
+    print "get_events_list:"
+    print (signedUp)
+
     return render_template('Events.html',events=db.list_events(), user=user)
 
 @app.route('/volunteer', methods=['GET','POST'])
@@ -170,15 +173,15 @@ def volunteer():
 
         event = events[event_id-1]
         signups = db.list_signups(event_id)
-        print("signups = %s" % signups)
-        print("volunteers = %d" % event[5])
-        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups)
+        return render_template('Volunteer.html', id=event_id, event=event, signups=signups)
 
-        print("event_id = %d" % event_id)
-        print("signups = %s" % signups)
-        return render_template('Volunteer.html', id=request.args.get('id'), event=event, signups=signups, db=db)
-    db.volunteer(request.form['id'], session['username'])
+    try:
+        id = int(request.form['id'])
+    except ValueError:
+        id = 0
+    db.volunteer(id, session['username'])
     return redirect(url_for('events'))
+
 # add event
 @app.route('/addevent', methods=['GET','POST'])
 def addevent():
